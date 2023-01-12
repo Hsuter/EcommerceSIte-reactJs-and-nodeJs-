@@ -1,0 +1,30 @@
+.cart {
+    height: 350px !important;
+    width: 350px !important;
+
+}
+
+@media (max-width: 600px) {
+    .cart {
+        height: 200px !important;
+        width: 200px !important;
+
+    }
+
+}
+
+.remove {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.desc {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+@media (min-width: 767px) {
+    .menu {
+        visibility: visible !important;
+    }
+}
