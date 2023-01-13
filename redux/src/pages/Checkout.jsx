@@ -39,7 +39,10 @@ function Checkout() {
   return (
     <div className="flex md:flex-row flex-col">
       <div className="h-100 md:w-[40%] ">
-        <div className="md:hidden  bg-black text-white flex p-2 " onClick={toggleMenu}>
+        <div
+          className="md:hidden  bg-black text-white flex p-2 "
+          onClick={toggleMenu}
+        >
           <p>Details</p>
           <ArrowDropDown />
         </div>
