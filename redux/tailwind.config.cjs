@@ -15,18 +15,14 @@ module.exports = {
         slideright: "slideright 1s ease-in-out",
         wave: "wave 1.2s linear infinite",
         slowfade: "slowfade 2.2s ease-in-out",
-        marquee: "marquee 25s linear infinite",
-        marquee2: "marquee2 25s linear infinite",
+        marquee: "marquee 5s linear infinite",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
-        marquee2: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0%)" },
-        },
+
         slowfade: {
           from: { opacity: 0 },
           to: { opacity: 1 },

@@ -17,7 +17,7 @@ const ProductDetails = () => {
         />
       ))}
 
-      <div>
+      <div className="flex items-center justify-center ">
         <MarqueeCard />
       </div>
     </div>
