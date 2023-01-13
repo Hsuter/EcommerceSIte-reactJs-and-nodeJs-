@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
       className="flex flex-col  w-80 h-100 items-center  m-5 shadow-xl px-10"
       key={product.id}
     >
-      <p className="font-bold">{product.id}</p>
+      <p className="font-bold">{product.name}</p>
 
       <img
         alt={product.name}

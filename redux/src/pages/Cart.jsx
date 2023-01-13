@@ -70,7 +70,7 @@ const Cart = () => {
               </p>
               {auth._id ? (
                 <>
-                  <p className="mb-1 text-style: underline">ChECKOUT OPTIONS</p>
+                  <p className="mb-1 text-style: underline">CHECKOUT OPTIONS</p>
 
                   <Link to="/checkout">
                     <button className="w-36  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
