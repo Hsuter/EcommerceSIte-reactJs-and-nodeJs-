@@ -1,10 +1,10 @@
 const axios = require("axios");
 
-
 const createToken = async (req, res, next) => {
-  const secret = "NemP8iLIvvQU6rEc";
-  const consumer = "NeTjWyhRn6p76W5zsYSz9hEC1Dfxkhm5";
+  const secret = "8DJEVtAD7LF5bM5b";
+  const consumer = "lp2yawwwRv2h7K9XIZAf1vlaIW3cnRwL";
   const auth = new Buffer.from(`${consumer}:${secret}`).toString("base64");
+
   await axios
     .get(
       "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
@@ -32,6 +32,7 @@ const stkPush = async (req, res) => {
   const passkey =
     "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
   const url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest";
+  console.log(phone, amount);
 
   const date = new Date();
   const timestamp =
