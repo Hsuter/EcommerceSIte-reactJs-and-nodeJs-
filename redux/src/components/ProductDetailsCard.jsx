@@ -19,7 +19,6 @@ const ProductDetailsCard = ({ detailsItem }) => {
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleAddToCart = (detailsItem) => {
     dispatch(addToCart(detailsItem));
@@ -52,9 +51,16 @@ const ProductDetailsCard = ({ detailsItem }) => {
           <div className="flex flex-col   ">
             <div className="flex flex-row w-[120px] justify-around border-2 border-sky-900	border-color: rgb(14 165 233) items-center font-serif font-bold ">
               <button onClick={() => handleAddToCart(detailsItem)}>+</button>
-              <div className="text-sm border-x-2 border-sky-900	border-color: rgb(14 165 233) px-2 ">
-                {detailsQuantity}
-              </div>
+              {detailsQuantity > 0 ? (
+                <div className="text-sm border-x-2 border-sky-900	border-color: rgb(14 165 233) px-2 ">
+                  {detailsQuantity}
+                </div>
+              ) : (
+                <div className="text-sm border-x-2 border-sky-900	border-color: rgb(14 165 233) px-2 ">
+                  0
+                </div>
+              )}
+
               <button
                 className="pr-1 "
                 onClick={() => handleRemoveFromCart(detailsItem)}

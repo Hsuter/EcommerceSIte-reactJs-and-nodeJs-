@@ -8,7 +8,7 @@ const ProductDetails = () => {
   const details = useSelector((state) => state.details);
 
   return (
-    <div className=" justify-between flex flex-col mt-10 font-serif ">
+    <div className=" justify-between flex flex-col mt-28 font-serif  ">
       {details.detailsItems.map((detailsItem, i) => (
         <ProductDetailsCard
           detailsItem={detailsItem}
@@ -17,8 +17,11 @@ const ProductDetails = () => {
         />
       ))}
 
-      <div className="flex items-center justify-center ">
-        <MarqueeCard />
+      <div className="flex  flex-col items-center  ">
+        <p className="mt-10 font-serif ">Similar Products</p>
+        <div className="flex ">
+          <MarqueeCard />
+        </div>
       </div>
     </div>
   );

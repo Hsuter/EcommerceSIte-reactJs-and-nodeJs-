@@ -5,24 +5,25 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { ArrowDropDown } from "@material-ui/icons";
 import CheckoutCard from "../components/CheckoutCard";
+import url from "../features/api";
 
 function Checkout() {
   const cart = useSelector((state) => state.cart);
 
-  const [phone, setPhoneNumber] = useState("");
-  const [amount, setAmount] = useState("");
+  const [phone, setPhoneNumber] = useState();
+  const [amount, setAmount] = useState();
   const [menu, setMenu] = useState(true);
 
   useEffect(() => {
-    setAmount(cart.cartTotalAmount);
+    setAmount("500");
   }, []);
 
   const payHandler = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/token", {
-        amount,
+      .post("http://localhost:4000/api/token", {
         phone,
+        amount,
       })
       .then((res) => {
         console.log(res);
@@ -30,14 +31,10 @@ function Checkout() {
   };
 
   const toggleMenu = () => {
-    if (menu == true) {
-      setMenu(false);
-    } else {
-      setMenu(true);
-    }
+    setMenu(menu ? false : true);
   };
   return (
-    <div className="flex md:flex-row flex-col">
+    <div className="flex md:flex-row flex-col ">
       <div className="h-100 md:w-[40%] ">
         <div
           className="md:hidden  bg-black text-white flex p-2 "
