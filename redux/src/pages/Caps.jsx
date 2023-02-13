@@ -3,12 +3,12 @@ import ProductCard from "../components/ProductCard";
 import { useGetAllCapsQuery } from "../features/productsApi";
 import { CircularProgress } from "@mui/material";
 
-const Tshirts = () => {
+const Caps = () => {
   const { data, isLoading, error } = useGetAllCapsQuery();
 
   return (
     <div className="flex flex-col items-center mt-10">
-      <h3 className="my-8 font-serif md:text-5xl text-3xl">Tshirts</h3>
+      <h3 className="my-8 font-serif md:text-5xl text-3xl">Caps</h3>
       <div className=" flex flex-wrap ">
         {isLoading ? (
           <>
@@ -20,7 +20,7 @@ const Tshirts = () => {
         ) : (
           <>
             {data
-              ?.filter((product) => product.category == "Tshirt")
+              ?.filter((product) => product.category == "Cap")
               .map((filteredProduct, i) => (
                 <ProductCard
                   product={filteredProduct}
@@ -35,4 +35,4 @@ const Tshirts = () => {
   );
 };
 
-export default Tshirts;
+export default Caps;

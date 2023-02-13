@@ -28,7 +28,3 @@
         visibility: visible !important;
     }
 }
-
-.mrq:hover {
-    animation-play-state: paused;
-}

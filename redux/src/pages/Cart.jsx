@@ -6,6 +6,7 @@ import { ArrowBack, ShoppingCart } from "@material-ui/icons";
 import CartCard from "../components/CartCard";
 import { useDispatch } from "react-redux";
 import { clearCart, getTotals } from "../features/cartSlice";
+import PayButton from "../components/StripePayBtn";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -22,7 +23,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center ">
+    <div className="flex flex-col justify-center items-center mt-20 ">
       <div></div>
       <h2 className="text-4xl font-serif my-5">Shopping Cart</h2>
       <div className="flex sm:flex-row flex-col w-screen sm:items-center xl:mx-20 mx-10 md:justify-around my-5">
@@ -70,18 +71,18 @@ const Cart = () => {
               </p>
               {auth._id ? (
                 <>
-                  <p className="mb-1 text-style: underline">CHECKOUT OPTIONS</p>
+                  <p className="mb-1 text-style: underline">CECKOUT OPTIONS</p>
 
                   <Link to="/checkout">
                     <button className="w-36  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                      M-pesa
+                      M-PESA
                     </button>
                   </Link>
                   <p className="my-2">OR</p>
                   <Link to="">
-                    <button className="w-36 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                      Stripe
-                    </button>
+                    <div className="w-36 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded items-center justify-center ">
+                      <PayButton cartItems={cart.cartItems} />
+                    </div>
                   </Link>
                 </>
               ) : (

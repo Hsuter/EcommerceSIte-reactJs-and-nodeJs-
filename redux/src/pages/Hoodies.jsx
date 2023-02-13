@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 import { useGetAllCapsQuery } from "../features/productsApi";
 import { CircularProgress } from "@mui/material";
 
-const Tshirts = () => {
+const Hoodies = () => {
   const { data, isLoading, error } = useGetAllCapsQuery();
 
   return (
@@ -20,7 +20,7 @@ const Tshirts = () => {
         ) : (
           <>
             {data
-              ?.filter((product) => product.category == "Tshirt")
+              ?.filter((product) => product.category == "Hoodies")
               .map((filteredProduct, i) => (
                 <ProductCard
                   product={filteredProduct}
@@ -35,4 +35,4 @@ const Tshirts = () => {
   );
 };
 
-export default Tshirts;
+export default Hoodies;

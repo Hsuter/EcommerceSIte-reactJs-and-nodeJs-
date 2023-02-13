@@ -10,7 +10,6 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    navigate("/cart");
   };
   const handleViewDetails = () => {
     dispatch(viewDetails(product));
@@ -19,7 +18,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="flex flex-col  w-80 h-100 items-center  m-5 shadow-xl px-10"
+      className="flex flex-col w-80 h-100 items-center m-5 shadow-xl px-10"
       key={product.id}
     >
       <p className="font-bold">{product.name}</p>

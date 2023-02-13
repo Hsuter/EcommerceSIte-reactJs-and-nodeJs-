@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../features/authSlice";
 import { toast } from "react-toastify";
+import Menu from "./Menu";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -15,54 +16,57 @@ const NavBar = () => {
     toast.warning("You've logged out", { position: "top-center" });
   };
   return (
-    <div className="flex  flex-row bg-black font-serif w-100  items-center ">
-      <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
-        <Link to="/">
-          <h2 className="sm:text-3xl text-xl font-bold text-white ml-4">
-            Naxy Brands
-          </h2>
-        </Link>
+    <div className="flex flex-col">
+      <div className="flex flex-row bg-black font-serif  items-center fixed w-full   ">
+        <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
+          <Link to="/">
+            <h2 className="sm:text-3xl  font-bold text-white ml-7">
+              Naxy Brands
+            </h2>
+          </Link>
 
-        <Link to="/Cart">
-          <div className="flex mr-4 items-center justify-center">
-            <ShoppingBasket className="text-white" />
-            <div className="md:text-[16px] text-[12px] rounded-full text-black p-1 px-2 items-center justify-center text-sm bg-lime m-2 ">
-              <p className="items-center justify-center">
-                {cart.cartTotalsQuantity}
-              </p>
+          <Link to="/Cart">
+            <div className="flex mr-4 items-center justify-center">
+              <ShoppingBasket className="text-white " />
+              <div className="md:text-[16px] text-[12px] rounded-full text-black md:p-2 px-2 items-center justify-center text-sm bg-lime m-2 ">
+                <p className="items-center justify-center">
+                  {cart.cartTotalsQuantity}
+                </p>
+              </div>
             </div>
-          </div>
-        </Link>
-      </div>
+          </Link>
+        </div>
 
-      {auth._id ? (
-        <div
-          className="flex flex-row  gap-5 w-40 text-white text-[12px] 
+        {auth._id ? (
+          <div
+            className="flex flex-row  gap-5 w-40 text-white text-[12px] 
             items-center "
-        >
-          <div>
-            <p className="">Welcome {auth.name}</p>
-          </div>
-          <Link to="signin">
-            <div className="mr-5">
-              <button className="" onClick={handleLogout}>
-                Logout
-              </button>
-            </div>
-          </Link>
-        </div>
-      ) : (
-        <div className="flex flex-row  gap-5 w-40 text-white text-[12px]  ">
-          <Link to="signin">
+          >
             <div>
-              <button className="">Login</button>
+              <p className="">Welcome {auth.name}</p>
             </div>
-          </Link>
-          <Link to="/signup">
-            <div className="text-white">Register</div>
-          </Link>
-        </div>
-      )}
+            <Link to="signin">
+              <div className="mr-5">
+                <button className="" onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex flex-row  gap-5 w-40 text-white text-[12px]  ">
+            <Link to="signin">
+              <div>
+                <button className="">Login</button>
+              </div>
+            </Link>
+            <Link to="/signup">
+              <div className="text-white">Register</div>
+            </Link>
+          </div>
+        )}
+      </div>
+      <div className="md:pt-16 pt-12 "></div>
     </div>
   );
 };
