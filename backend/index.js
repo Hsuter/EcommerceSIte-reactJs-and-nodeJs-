@@ -16,7 +16,14 @@ require("dotenv").config();
 
 //middlewares(use)
 
-app.use(express.json());
+app.use(
+  express.json({
+    limit: "5mb",
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
 
 app.use(cors({ origin: "*" }));
 
