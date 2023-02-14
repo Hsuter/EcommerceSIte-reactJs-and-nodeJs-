@@ -9,6 +9,7 @@ const TokenRoute = require("./routes/token");
 const register = require("./routes/register");
 const login = require("./routes/login");
 const stripe = require("./routes/stripe");
+const productsRoute = require("./routes/products");
 
 //config
 
@@ -31,6 +32,7 @@ app.use("/api/token", TokenRoute);
 app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/stripe", stripe);
+app.use("/api/products", productsRoute);
 
 //get request
 app.get("/", (req, res) => {
