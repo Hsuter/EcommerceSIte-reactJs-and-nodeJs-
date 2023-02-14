@@ -17,7 +17,7 @@ const NavBar = () => {
   };
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row bg-black font-serif  items-center fixed w-full   ">
+      <div className="flex flex-row bg-black font-serif  items-center fixed  w-full  pr-5  ">
         <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
           <Link to="/">
             <h2 className="sm:text-3xl  font-bold text-white ml-7">
