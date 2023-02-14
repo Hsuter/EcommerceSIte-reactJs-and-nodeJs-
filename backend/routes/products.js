@@ -7,38 +7,39 @@ const router = express.Router();
 //create a new product
 
 router.post("/", async (req, res) => {
-  const { name, desc, price, category, image } = req.body;
+  const { name, desc, price, image, category } = req.body;
 
   try {
     if (image) {
-      const uploadRes = await cloudinary.uploader.upload(image, {
+      const uploadedResponse = await cloudinary.uploader.upload(image, {
         upload_preset: "naxyshop",
       });
-      if (uploadRes) {
-        const newProduct = new Product({
+
+      if (uploadedResponse) {
+        const product = new Product({
           name,
           desc,
           price,
+          image: uploadedResponse,
           category,
-          image: uploadRes,
         });
-        const savedProduct = await newProduct.save();
+
+        const savedProduct = await product.save();
         res.status(200).send(savedProduct);
       }
     }
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
   }
 });
 
 router.get("/", async (req, res) => {
   try {
-    const products = await Product.find();
-    res.status(200).send(products);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    const product = await Product.findById();
+    res.status(200).send(product);
+  } catch (error) {
+    res.status(500).send(error);
   }
 });
 
