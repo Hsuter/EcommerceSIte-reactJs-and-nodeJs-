@@ -1,25 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toast } from "react-toastify";
 import url from "./api";
+import { toast } from "react-toastify";
 
 const initialState = {
   items: [],
   status: null,
-  error: null,
   createStatus: null,
 };
 
 export const productsFetch = createAsyncThunk(
   "products/productsFetch",
-  async (id = null, { rejectWithValue }) => {
+  async () => {
     try {
-      const response = await axios.get("http://localhost:4000");
-      console.log("res", response.data);
+      const response = await axios.get(`${url}products`);
 
       return response.data;
     } catch (error) {
-      return rejectWithValue("An error occured");
+      console.log(error);
     }
   }
 );
@@ -28,14 +26,11 @@ export const productsCreate = createAsyncThunk(
   "products/productsCreate",
   async (values) => {
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/products",
-        values
-      );
-      console.log("res", response.data);
+      const response = await axios.post(`${url}api/products`, values);
+
       return response.data;
     } catch (error) {
-      console.log("error", error);
+      console.log(error);
       toast.error(error.response?.data);
     }
   }
@@ -47,30 +42,25 @@ const productsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [productsFetch.pending]: (state, action) => {
-      //immer(mutataion)
       state.status = "pending";
     },
     [productsFetch.fulfilled]: (state, action) => {
-      state.status = "Success";
       state.items = action.payload;
-      console.log("state", state.items);
+      state.status = "success";
     },
     [productsFetch.rejected]: (state, action) => {
-      state.status = "Error";
-      state.error = action.payload;
+      state.status = "rejected";
     },
     [productsCreate.pending]: (state, action) => {
-      //immer(mutataion)
       state.createStatus = "pending";
     },
     [productsCreate.fulfilled]: (state, action) => {
-      state.createStatus = "Success";
-      state.items = [...state.items, action.payload];
-      console.log("state", state.items);
+      state.items.push(action.payload);
+      state.createStatus = "success";
+      toast.success("Product Created!");
     },
     [productsCreate.rejected]: (state, action) => {
-      state.createStatus = "Error";
-      state.error = action.payload;
+      state.createStatus = "rejected";
     },
   },
 });
