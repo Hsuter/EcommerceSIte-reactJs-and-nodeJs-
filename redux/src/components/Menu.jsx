@@ -17,8 +17,8 @@ const Menu = () => {
   };
 
   return (
-    <div className="flex flex-col fixed w-full bg-slate-900 text-white ">
-      <div className=" mt-[-35.9px]">
+    <div className="flex flex-col fixed  md:w-full w-[100px] bg-slate-900 text-white ">
+      <div className=" mt-[-35.9px] ">
         <div className="flex md:hidden mb-3 ">
           {menu ? (
             <div className="animate-slowfade " onClick={toggleMenu}>
@@ -30,7 +30,7 @@ const Menu = () => {
             </div>
           )}
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden text-center">
           <div
             className={`${
               menu ? "visible animate-slidedown" : "hidden animate-slideup"
