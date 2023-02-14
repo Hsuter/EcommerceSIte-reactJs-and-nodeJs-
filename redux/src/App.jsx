@@ -1,4 +1,5 @@
 import "./App.css";
+
 import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
@@ -15,6 +16,10 @@ import SignUp from "./pages/SignUp";
 import ProductDetails from "./pages/ProductDetails";
 import CheckoutSuccess from "./components/CheckoutSuccess";
 import Menu from "./components/Menu";
+import Dashboard from "./components/admin/Dashboard";
+import Products from "./components/admin/Products";
+import Summary from "./components/admin/Summary";
+import CreateProduct from "./components/admin/CreateProduct";
 
 const App = () => {
   return (
@@ -35,6 +40,12 @@ const App = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/admin" element={<Dashboard />}>
+          <Route path="products" element={<Products />}>
+            <Route path="createproduct" element={<CreateProduct />} />
+          </Route>
+          <Route path="summary" element={<Summary />} />
+        </Route>
         <Route path="/" element={<Home />} />
       </Routes>
     </div>

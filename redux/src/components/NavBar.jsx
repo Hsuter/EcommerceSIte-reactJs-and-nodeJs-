@@ -42,6 +42,7 @@ const NavBar = () => {
             className="flex flex-row  gap-5 w-40 text-white text-[12px] 
             items-center "
           >
+            <Link to="/admin">Admin</Link>
             <div>
               <p className="">Welcome {auth.name}</p>
             </div>
