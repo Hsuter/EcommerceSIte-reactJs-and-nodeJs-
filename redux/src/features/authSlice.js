@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import url from "./api";
+import { url } from "./api";
 import jwtDecode from "jwt-decode";
 
 const initialState = {
-  name: "",
   token: localStorage.getItem("token"),
+  name: "",
   email: "",
   _id: "",
+  isAdmin: false,
   registerStatus: "",
   registerError: "",
   loginStatus: "",
@@ -19,12 +20,14 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (values, { rejectWithValue }) => {
     try {
-      const token = await axios.post(`${url}/register`, {
+      const token = await axios.post(`${url}api/register`, {
         name: values.name,
-        password: values.password,
         email: values.email,
+        password: values.password,
       });
+
       localStorage.setItem("token", token.data);
+
       return token.data;
     } catch (error) {
       console.log(error.response.data);
@@ -37,12 +40,28 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (values, { rejectWithValue }) => {
     try {
-      const token = await axios.post(`${url}/login`, {
+      const token = await axios.post(`${url}api/login`, {
         email: values.email,
         password: values.password,
       });
 
       localStorage.setItem("token", token.data);
+      return token.data;
+    } catch (error) {
+      console.log(error.response);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getUser = createAsyncThunk(
+  "auth/getUser",
+  async (id, { rejectWithValue }) => {
+    try {
+      const token = await axios.get(`${url}api/user/${id}`, setHeaders());
+
+      localStorage.setItem("token", token.data);
+
       return token.data;
     } catch (error) {
       console.log(error.response);
@@ -60,55 +79,51 @@ const authSlice = createSlice({
 
       if (token) {
         const user = jwtDecode(token);
-        console.log("state", user.name);
         return {
           ...state,
           token,
           name: user.name,
           email: user.email,
           _id: user._id,
-          useLoaded: true,
+          isAdmin: user.isAdmin,
+          userLoaded: true,
         };
-      }
+      } else return { ...state, userLoaded: true };
     },
     logoutUser(state, action) {
       localStorage.removeItem("token");
+
       return {
         ...state,
-        name: "",
         token: "",
+        name: "",
         email: "",
         _id: "",
+        isAdmin: false,
         registerStatus: "",
         registerError: "",
         loginStatus: "",
         loginError: "",
-        userLoaded: false,
       };
     },
   },
   extraReducers: (builder) => {
-    {
-      /*register */
-    }
     builder.addCase(registerUser.pending, (state, action) => {
       return { ...state, registerStatus: "pending" };
     });
     builder.addCase(registerUser.fulfilled, (state, action) => {
       if (action.payload) {
         const user = jwtDecode(action.payload);
-
         return {
           ...state,
           token: action.payload,
           name: user.name,
           email: user.email,
           _id: user._id,
+          isAdmin: user.isAdmin,
           registerStatus: "success",
         };
-      } else {
-        return state;
-      }
+      } else return state;
     });
     builder.addCase(registerUser.rejected, (state, action) => {
       return {
@@ -117,9 +132,6 @@ const authSlice = createSlice({
         registerError: action.payload,
       };
     });
-    {
-      /*login */
-    }
     builder.addCase(loginUser.pending, (state, action) => {
       return { ...state, loginStatus: "pending" };
     });
@@ -142,6 +154,33 @@ const authSlice = createSlice({
         ...state,
         loginStatus: "rejected",
         loginError: action.payload,
+      };
+    });
+    builder.addCase(getUser.pending, (state, action) => {
+      return {
+        ...state,
+        getUserStatus: "pending",
+      };
+    });
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      if (action.payload) {
+        const user = jwtDecode(action.payload);
+        return {
+          ...state,
+          token: action.payload,
+          name: user.name,
+          email: user.email,
+          _id: user._id,
+          isAdmin: user.isAdmin,
+          getUserStatus: "success",
+        };
+      } else return state;
+    });
+    builder.addCase(getUser.rejected, (state, action) => {
+      return {
+        ...state,
+        getUserStatus: "rejected",
+        getUserError: action.payload,
       };
     });
   },

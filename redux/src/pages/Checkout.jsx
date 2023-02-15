@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { ArrowDropDown } from "@material-ui/icons";
 import CheckoutCard from "../components/CheckoutCard";
-import url from "../features/api";
 
 function Checkout() {
   const cart = useSelector((state) => state.cart);

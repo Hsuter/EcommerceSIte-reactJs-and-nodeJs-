@@ -22,11 +22,15 @@ function CartCard({ cartItem }) {
     <div>
       <div
         className="  flex sm:flex-row flex-col w-screen sm:items-center xl:mx-20 mx-10 md:justify-around my-5 "
-        key={cartItem.id}
+        key={cartItem._id}
       >
         <div className="flex flex-row items-center sm:w-96 w-80 mx-5  ">
           <div className="shadow-2xl ">
-            <img alt={cartItem.name} src={cartItem.image} className="  p-3 " />
+            <img
+              alt={cartItem.name}
+              src={cartItem.image.url}
+              className="  p-3 "
+            />
           </div>
           <div className="flex flex-col items-start gap-5 mx-5">
             <div className="w-40">

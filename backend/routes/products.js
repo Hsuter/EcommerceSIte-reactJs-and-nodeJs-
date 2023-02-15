@@ -1,12 +1,13 @@
 const express = require("express");
 const cloudinary = require("../utils/cloudinary");
 const { Product } = require("../models/product");
+const { isAdmin } = require("../middleware/auth");
 
 const router = express.Router();
 
 //create a new product
 
-router.post("/", async (req, res) => {
+router.post("/", isAdmin, async (req, res) => {
   const { name, desc, price, image, category } = req.body;
 
   try {
@@ -36,7 +37,7 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const product = await Product.findById();
+    const product = await Product.find();
     res.status(200).send(product);
   } catch (error) {
     res.status(500).send(error);

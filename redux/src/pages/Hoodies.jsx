@@ -2,9 +2,14 @@ import React from "react";
 import ProductCard from "../components/ProductCard";
 import { useGetAllCapsQuery } from "../features/productsApi";
 import { CircularProgress } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Hoodies = () => {
-  const { data, isLoading, error } = useGetAllCapsQuery();
+  const {
+    items: data,
+    isLoading,
+    error,
+  } = useSelector((state) => state.products);
 
   return (
     <div className="flex flex-col items-center mt-10">
@@ -24,7 +29,7 @@ const Hoodies = () => {
               .map((filteredProduct, i) => (
                 <ProductCard
                   product={filteredProduct}
-                  key={filteredProduct.id}
+                  key={filteredProduct._id}
                   i={i}
                 />
               ))}

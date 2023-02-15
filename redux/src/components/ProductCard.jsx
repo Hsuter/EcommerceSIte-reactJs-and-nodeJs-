@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
 
       <img
         alt={product.name}
-        src={product.image}
+        src={product.image.url}
         className="w-96 h-60"
         onClick={handleViewDetails}
       />

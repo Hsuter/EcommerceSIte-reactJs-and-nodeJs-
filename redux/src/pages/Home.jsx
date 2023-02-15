@@ -2,9 +2,14 @@ import React from "react";
 import { useGetAllCapsQuery } from "../features/productsApi";
 import ProductCard from "../components/ProductCard";
 import { CircularProgress } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const { data, isLoading, error } = useGetAllCapsQuery();
+  const {
+    items: data,
+    isLoading,
+    error,
+  } = useSelector((state) => state.products);
 
   return (
     <div className=" flex flex-col items-center mt-10">
@@ -21,15 +26,13 @@ const Home = () => {
           <p>An error occured</p>
         ) : (
           <>
-            {data
-              ?.filter((product) => product.ratings > 2)
-              .map((filteredProduct, i) => (
-                <ProductCard
-                  product={filteredProduct}
-                  key={filteredProduct.id}
-                  i={i}
-                />
-              ))}
+            {data?.map((filteredProduct, i) => (
+              <ProductCard
+                product={filteredProduct}
+                key={filteredProduct._id}
+                i={i}
+              />
+            ))}
           </>
         )}
       </div>
@@ -52,7 +55,7 @@ const Home = () => {
                 .map((filteredProduct, i) => (
                   <ProductCard
                     product={filteredProduct}
-                    key={filteredProduct.id}
+                    key={filteredProduct._id}
                     i={i}
                   />
                 ))}
@@ -76,7 +79,7 @@ const Home = () => {
                 .map((filteredProduct, i) => (
                   <ProductCard
                     product={filteredProduct}
-                    key={filteredProduct.id}
+                    key={filteredProduct._id}
                     i={i}
                   />
                 ))}
@@ -100,7 +103,7 @@ const Home = () => {
                 .map((filteredProduct, i) => (
                   <ProductCard
                     product={filteredProduct}
-                    key={filteredProduct.id}
+                    key={filteredProduct._id}
                     i={i}
                   />
                 ))}

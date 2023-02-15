@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../features/authSlice";
 import { toast } from "react-toastify";
-import Menu from "./Menu";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -42,7 +41,8 @@ const NavBar = () => {
             className="flex flex-row  gap-5 w-40 text-white text-[12px] 
             items-center "
           >
-            <Link to="/admin">Admin</Link>
+            {auth.isAdmin ? <Link to="/admin">Admin</Link> : null}
+
             <div>
               <p className="">Welcome {auth.name}</p>
             </div>
