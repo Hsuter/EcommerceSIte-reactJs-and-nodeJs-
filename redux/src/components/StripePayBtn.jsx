@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import url from "../features/api";
+import { url } from "../features/api";
 
 const PayButton = ({ cartItems }) => {
   const user = useSelector((state) => state.auth);

@@ -1,7 +1,17 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const user = useSelector((state) => state.auth);
+
+  if (!user.isAdmin)
+    return (
+      <h1 className="text-center text-2xl mt-10">
+        You are not authorized to view this page
+      </h1>
+    );
+
   return (
     <div className="flex flex-row md:flex-nowrap flex-wrap text-center  justify-center">
       <div className=" font-serif">

@@ -50,7 +50,7 @@ const Cart = () => {
             <div className="h-0.5 font-bold bg-black"></div>
 
             {cart.cartItems.map((cartItem, i) => (
-              <CartCard cartItem={cartItem} key={cartItem.id} i={i} />
+              <CartCard cartItem={cartItem} key={cartItem._id} i={i} />
             ))}
           </div>
           <div className="flex sm:flex-row flex-col justify-between w-full my-5 px-5 items-center font-serif">

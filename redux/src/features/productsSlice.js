@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import url from "./api";
+import { url } from "./api";
+import { setHeaders } from "./api";
 import { toast } from "react-toastify";
 
 const initialState = {
@@ -13,8 +14,8 @@ export const productsFetch = createAsyncThunk(
   "products/productsFetch",
   async () => {
     try {
-      const response = await axios.get(`${url}products`);
-
+      const response = await axios.get(`${url}api/products`);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -26,7 +27,11 @@ export const productsCreate = createAsyncThunk(
   "products/productsCreate",
   async (values) => {
     try {
-      const response = await axios.post(`${url}api/products`, values);
+      const response = await axios.post(
+        `${url}api/products`,
+        values,
+        setHeaders()
+      );
 
       return response.data;
     } catch (error) {
