@@ -17,14 +17,7 @@ require("dotenv").config();
 
 //middlewares(use)
 
-app.use(
-  express.json({
-    limit: "5mb",
-    verify: (req, res, buf) => {
-      req.rawBody = buf.toString();
-    },
-  })
-);
+app.use(express.json());
 
 app.use(cors({ origin: "*" }));
 
@@ -50,6 +43,7 @@ const uri = process.env.DB_URI;
 app.listen(port, console.log(`Server running on port ${port}`));
 
 //connect to mongodb
+mongoose.set("strictQuery", false);
 
 mongoose
   .connect(uri, {

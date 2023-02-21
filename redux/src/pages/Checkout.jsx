@@ -52,7 +52,7 @@ function Checkout() {
           <h1 className="mb-5">Products</h1>
 
           {cart.cartItems.map((cartItem, i) => (
-            <CheckoutCard cartItem={cartItem} key={cartItem.id} i={i} />
+            <CheckoutCard cartItem={cartItem} key={cartItem._id} i={i} />
           ))}
 
           <div>

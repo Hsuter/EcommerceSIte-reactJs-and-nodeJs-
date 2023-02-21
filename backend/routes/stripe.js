@@ -12,7 +12,6 @@ router.post("/create-checkout-session", async (req, res) => {
   const customer = await stripe.customers.create({
     metadata: {
       userId: req.body.userId,
-      cart: JSON.stringify(req.body.cartItems),
     },
   });
   const line_items = req.body.cartItems.map((item) => {
@@ -21,7 +20,7 @@ router.post("/create-checkout-session", async (req, res) => {
         currency: "kes",
         product_data: {
           name: item.name,
-          images: [item.image],
+          images: [item.image.url],
           description: item.desc,
           metadata: {
             id: item.id,
@@ -34,36 +33,38 @@ router.post("/create-checkout-session", async (req, res) => {
   });
 
   const session = await stripe.checkout.sessions.create({
-    customer: customer.id,
+    payment_method_types: ["card"],
+    phone_number_collection: {
+      enabled: true,
+    },
     line_items,
     mode: "payment",
+    customer: customer.id,
     success_url: `${process.env.CART_URL}/checkout-success`,
     cancel_url: `${process.env.CART_URL}/cart`,
   });
 
+  // res.redirect(303, session.url);
   res.send({ url: session.url });
 });
 
 //create order
-createOrder = async (customer, data) => {
-  const Items = JSON.parse(customer.metadata.cart);
+const createOrder = async (customer, data, lineItems) => {
   const newOrder = new Order({
     userId: customer.metadata.userId,
-    customerId: customer.id,
-    payment_Intent: data.payment_intent,
-    products: Items,
-    subtotal: data.amount_total / 100,
-    total: data.amount_total / 100,
+    customerId: data.customer,
+    paymentIntentId: data.payment_intent,
+    products: lineItems.data,
+    subtotal: data.amount_subtotal,
+    total: data.amount_total,
     payment_status: data.payment_status,
-    delivery_status: data.delivery_status,
   });
 
   try {
     const savedOrder = await newOrder.save();
-    console.log("Proccessed Order", savedOrder);
-    //email
+    console.log("Processed Order:", savedOrder);
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
   }
 };
 
@@ -72,8 +73,8 @@ createOrder = async (customer, data) => {
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 let endpointSecret;
 
-endpointSecret =
-  "whsec_032b673bd7d503d628fb73c86fc372b964b577793f3400339e56de16070c2b18";
+//endpointSecret =
+//"whsec_032b673bd7d503d628fb73c86fc372b964b577793f3400339e56de16070c2b18";
 
 router.post(
   "/webhook",
@@ -101,23 +102,21 @@ router.post(
         res.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
-
       data = event.data.object;
       eventType = event.type;
     } else {
-      console.log(
-        "No endpoint secret provided, skipping signature verification"
-      );
+      data = req.body.data.object;
+      eventType = req.body.type;
     }
 
     // Handle the event
 
     if (eventType === "checkout.session.completed") {
+      console.log("completed");
       stripe.customers
         .retrieve(data.customer)
         .then((customer) => {
-          console.log(customer);
-          console.log("data:", data);
+          console.log(customer, data);
           createOrder(customer, data);
         })
         .catch((err) => console.log(err.message));
