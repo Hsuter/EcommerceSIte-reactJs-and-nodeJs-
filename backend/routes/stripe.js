@@ -116,8 +116,15 @@ router.post(
       stripe.customers
         .retrieve(data.customer)
         .then((customer) => {
-          console.log(customer, data);
-          createOrder(customer, data);
+          stripe.checkout.sessions.listLineItems(
+            data._id,
+            console.log("data._id", data._id),
+            {},
+            function (err, lineItems) {
+              console.log("lineItems", lineItems);
+              createOrder(customer, data, lineItems);
+            }
+          );
         })
         .catch((err) => console.log(err.message));
     }
