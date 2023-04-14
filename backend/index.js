@@ -1,5 +1,6 @@
 //imports
 
+const helmet = require("helmet");
 const express = require("express");
 const cors = require("cors");
 const products = require("./products");
@@ -10,17 +11,29 @@ const register = require("./routes/register");
 const login = require("./routes/login");
 const stripe = require("./routes/stripe");
 const productsRoute = require("./routes/products");
+const dotenv = require("dotenv");
 
-//config
+//configdotenv
 
-require("dotenv").config();
+dotenv.config();
 
 //middlewares(use)
 
 app.use(express.json());
 
 app.use(cors({ origin: "*" }));
-
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      fontSrc: ["'self'"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'"],
+    },
+  })
+);
 app.use("/api/token", TokenRoute);
 app.use("/api/register", register);
 app.use("/api/login", login);
@@ -37,7 +50,7 @@ app.get("/products", (req, res) => {
 });
 
 //listen
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 const uri = process.env.DB_URI;
 
 app.listen(port, console.log(`Server running on port ${port}`));
