@@ -1,8 +1,8 @@
 import "./App.css";
-
+import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBarHome from "./components/NavBarHome";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
@@ -20,33 +20,125 @@ import Dashboard from "./components/admin/Dashboard";
 import Products from "./components/admin/Products";
 import Summary from "./components/admin/Summary";
 import CreateProduct from "./components/admin/CreateProduct";
+import NavBarOther from "./components/NavBarOther";
 
 const App = () => {
-  return (
-    <div className="App flex-1   overflow-x-hidden hide-scrollbar  flex-col-reverse ">
-      <NavBar />
-      <Menu />
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [prevScrollPosition, setPrevScrollPosition] = useState(0);
 
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setPrevScrollPosition(scrollPosition);
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    console.log("Scroll position", { scrollPosition }, "Scroll direction: ", {
+      scrollDirection,
+    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPosition]);
+
+  const scrollDirection =
+    scrollPosition > prevScrollPosition && scrollPosition > 700
+      ? false
+      : scrollPosition < prevScrollPosition && scrollPosition > 700
+      ? false
+      : true;
+
+  return (
+    <div
+      className={`App flex-1   overflow-x-hidden hide-scrollbar  flex-col-reverse 
+      `}
+    >
       <ToastContainer />
       <Routes>
         <Route path="/checkout-success" element={<CheckoutSuccess />} />
-        <Route path="/Tshirts" element={<Tshirts />} />
-        <Route path="/Hoodies" element={<Hoodies />} />
-        <Route path="/Caps" element={<Caps />} />
-        <Route path="/productdetails" element={<ProductDetails />} />
+        <Route
+          path="/Tshirts"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Tshirts />
+            </>
+          }
+        />
+        <Route
+          path="/Hoodies"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Hoodies />
+            </>
+          }
+        />
+        <Route
+          path="/Caps"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Caps />
+            </>
+          }
+        />
+        <Route
+          path="/productdetails"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <ProductDetails />
+            </>
+          }
+        />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/tshirt" element={<Tshirts />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Checkout />
+            </>
+          }
+        />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Cart />
+            </>
+          }
+        />
+
         <Route path="/admin" element={<Dashboard />}>
           <Route path="products" element={<Products />}>
             <Route path="createproduct" element={<CreateProduct />} />
           </Route>
           <Route path="summary" element={<Summary />} />
         </Route>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <NavBarHome scrollDirection={scrollDirection} />
+              <Menu scrollDirection={scrollDirection} />
+              <Home />
+            </>
+          }
+        />
       </Routes>
     </div>
   );

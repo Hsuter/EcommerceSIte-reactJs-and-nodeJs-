@@ -34,9 +34,9 @@ function Checkout() {
   };
   return (
     <div className="flex md:flex-row flex-col ">
-      <div className="h-100 md:w-[40%] ">
+      <div className="h-100 md:w-[40%] sm:mt-20 ">
         <div
-          className="md:hidden  bg-black text-white flex p-2 "
+          className="md:hidden  bg-white text-black flex p-2 mt-2 "
           onClick={toggleMenu}
         >
           <p>Details</p>
@@ -45,7 +45,7 @@ function Checkout() {
 
         {/* Products card*/}
         <div
-          className={`menu flex flex-col pb-5 items-center h-[100%] bg-black text-white ${
+          className={`menu flex flex-col pb-5 items-center h-[100%] bg-white text-black ${
             menu ? "visible" : "hidden"
           }  `}
         >
@@ -61,6 +61,7 @@ function Checkout() {
             </p>
           </div>
         </div>
+        <div className="w-full bg-slate-300 text-[1px]">.</div>
       </div>
 
       <div className="flex flex-col mx-5 h-screen items-center justify-center z-10 ">

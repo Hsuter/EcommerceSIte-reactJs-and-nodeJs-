@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../features/cartSlice";
 import { viewDetails } from "../features/productDetailsSlice";
+import { ShoppingBasketOutlined } from "@material-ui/icons";
 
 const ProductCard = ({ product }) => {
+  const [showPrice, setShowPrice] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,30 +19,29 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div
-      className="flex flex-col w-80 h-100 items-center m-5 shadow-xl px-10"
-      key={product.id}
-    >
-      <p className="font-bold">{product.name}</p>
-
-      <img
-        alt={product.name}
-        src={product.image.url}
-        className="w-96 h-60"
-        onClick={handleViewDetails}
-      />
-      <div>
-        <p>{product.desc}</p>
-        <p className="font-bold">
-          Price: <span className="font-light">{product.price}</span>
-        </p>
-      </div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-5"
-        onClick={() => handleAddToCart(product)}
+    <div className="flex flex-col justify-center items-center">
+      <div
+        className={`flex flex-col w-80 h-100 items-center m-5 shadow-xl px-10 border-2 `}
+        onMouseMove={() => setShowPrice(true)}
+        onMouseLeave={() => setShowPrice(false)}
+        key={product.id}
       >
-        Add to cart
-      </button>
+        <div className="flex w-[135%]">
+          <ShoppingBasketOutlined
+            onClick={() => handleAddToCart(product)}
+            className="ml-[85%] text-black m-5 cursor-pointer"
+          />
+        </div>
+
+        <img
+          alt={product.name}
+          src={product.image.url}
+          className="w-96 h-60 mb-8  "
+          onClick={handleViewDetails}
+        />
+      </div>
+      <p className="text-grey-800 text-[14px] ">{product.name}</p>
+      <p className="text-grey-800 text-[14px] ">Kes {product.price}/=</p>
     </div>
   );
 };
