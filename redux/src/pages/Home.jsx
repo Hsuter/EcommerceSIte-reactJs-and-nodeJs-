@@ -13,8 +13,8 @@ const Home = () => {
 
   return (
     <div className=" flex flex-col items-center mt-10">
-      <div className={`mt-[-120px]  `}>
-        <img src={bunner} alt="bunner" />
+      <div className={`sm:mt-[-120px] mt-[-28px] `}>
+        <img src={bunner} alt="bunner" className="" />
       </div>
       <h2 className="my-16 font-serif md:text-5xl text-3xl">
         Top Selling Items
