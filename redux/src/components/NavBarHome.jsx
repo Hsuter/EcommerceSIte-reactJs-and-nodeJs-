@@ -17,7 +17,7 @@ const NavBarHome = ({ scrollDirection }) => {
   return (
     <div className="flex flex-col mb-2">
       <div
-        className={`flex flex-row sm:${
+        className={`flex flex-row ${
           scrollDirection ? "" : "bg-white"
         }   font-serif  items-center fixed  w-full  pr-5  `}
       >
