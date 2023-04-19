@@ -25,7 +25,7 @@ const NavBarHome = ({ scrollDirection }) => {
           <Link to="/">
             <h2
               className={`sm:text-3xl  font-bold  ml-7 
-             ${scrollDirection ? "text-white" : "text-black"}`}
+             ${scrollDirection ? "md:text-white" : "text-black"}`}
             >
               Naxy Brands
             </h2>
@@ -34,11 +34,13 @@ const NavBarHome = ({ scrollDirection }) => {
           <Link to="/Cart">
             <div className="flex mr-4 items-center justify-center">
               <ShoppingBasket
-                className={` ${scrollDirection ? "text-white" : "text-black"}`}
+                className={` ${
+                  scrollDirection ? "md:text-white" : "text-black"
+                }`}
               />
               <div
                 className={`md:text-[16px] text-[12px] rounded-full  ${
-                  scrollDirection ? "text-white" : "text-black"
+                  scrollDirection ? "md:text-white" : "text-black"
                 } md:p-2 px-2 items-center justify-center text-sm bg-slate-300 m-2 `}
               >
                 <p className="items-center justify-center">
@@ -52,7 +54,7 @@ const NavBarHome = ({ scrollDirection }) => {
         {auth._id ? (
           <div
             className={`flex flex-row  gap-5 w-40  ${
-              scrollDirection ? "text-white" : "text-black"
+              scrollDirection ? "md:text-white" : "text-black"
             } text-[12px] 
             items-center `}
           >
@@ -72,7 +74,7 @@ const NavBarHome = ({ scrollDirection }) => {
         ) : (
           <div
             className={`flex flex-row  gap-5 w-40 ${
-              scrollDirection ? "text-white" : "text-black"
+              scrollDirection ? "md:text-white" : "text-black"
             } text-[12px]  `}
           >
             <Link to="signin">
@@ -81,7 +83,7 @@ const NavBarHome = ({ scrollDirection }) => {
               </div>
             </Link>
             <Link to="/signup">
-              <div className="text-black">Register</div>
+              <div className="">Register</div>
             </Link>
           </div>
         )}
