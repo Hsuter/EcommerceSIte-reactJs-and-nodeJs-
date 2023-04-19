@@ -18,7 +18,7 @@ const NavBarHome = ({ scrollDirection }) => {
     <div className="flex flex-col mb-2">
       <div
         className={`flex flex-row sm:${
-          scrollDirection ? "bg-black" : "bg-balck"
+          scrollDirection ? "bg-yellow" : "bg-yellow"
         }   font-serif  items-center fixed  w-full  pr-5  `}
       >
         <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
@@ -34,7 +34,7 @@ const NavBarHome = ({ scrollDirection }) => {
           <Link to="/Cart">
             <div className="flex mr-4 items-center justify-center">
               <ShoppingBasket
-                className={` ${scrollDirection ? "text-balck" : "text-black"}`}
+                className={` ${scrollDirection ? "text-black" : "text-black"}`}
               />
               <div
                 className={`md:text-[16px] text-[12px] rounded-full  ${
