@@ -4,7 +4,7 @@ import { MenuTwoTone, CloseTwoTone } from "@material-ui/icons";
 
 import { useState } from "react";
 
-const Menu = () => {
+const Menu = ({ scrollDirection }) => {
   const [menu, setMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -17,7 +17,12 @@ const Menu = () => {
   };
 
   return (
-    <div className="flex flex-col fixed  md:w-full w-[100px] bg-slate-900 text-white ">
+    <div
+      className={`flex flex-col fixed  md:w-full w-full   ${
+        scrollDirection ? "" : "bg-white"
+      }  `}
+    >
+      <div className="bg-slate-100 w-full text-[1px]">.</div>
       <div className=" mt-[-35.9px] ">
         <div className="flex md:hidden mb-3 ">
           {menu ? (
@@ -36,7 +41,7 @@ const Menu = () => {
               menu ? "visible animate-slidedown" : "hidden animate-slideup"
             } `}
           >
-            <ul className="flex md:flex-row flex-col justify-around md:my-2 font-serif cursor-pointer ">
+            <ul className="flex md:flex-row flex-col justify-around md:my-2 font-serif cursor-pointer  text-black">
               <Link to="/">
                 <li>Home</li>
               </Link>
@@ -56,9 +61,14 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <div className="max-md:hidden mt-10 ">
-        <div className="">
-          <ul className="flex md:flex-row flex-col justify-around md:my-2 font-serif cursor-pointer ">
+
+      <div className="max-md:hidden mt-10 flex justify-center ">
+        <div className=" ">
+          <ul
+            className={`flex md:flex-row flex-col  md:my-2 font-serif cursor-pointer gap-8  ${
+              scrollDirection ? "text-white" : "text-black"
+            }`}
+          >
             <Link to="/">
               <li>Home</li>
             </Link>
@@ -77,6 +87,7 @@ const Menu = () => {
           </ul>
         </div>
       </div>
+      <div className="bg-slate-200 w-full text-[1px]">.</div>
     </div>
   );
 };

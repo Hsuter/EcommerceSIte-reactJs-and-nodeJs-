@@ -1,3 +1,3 @@
 import product from "./product.png";
-
-export { product };
+import bunner from "./bunner.png";
+export { product, bunner };

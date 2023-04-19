@@ -1,8 +1,8 @@
 import React from "react";
-import { useGetAllCapsQuery } from "../features/productsApi";
 import ProductCard from "../components/ProductCard";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
+import bunner from "../assets/bunner.png";
 
 const Home = () => {
   const {
@@ -13,6 +13,9 @@ const Home = () => {
 
   return (
     <div className=" flex flex-col items-center mt-10">
+      <div className={`mt-[-120px]  `}>
+        <img src={bunner} alt="bunner" />
+      </div>
       <h2 className="my-16 font-serif md:text-5xl text-3xl">
         Top Selling Items
       </h2>
