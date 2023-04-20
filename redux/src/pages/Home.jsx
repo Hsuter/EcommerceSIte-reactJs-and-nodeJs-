@@ -19,7 +19,7 @@ const Home = () => {
       <h2 className="my-16 font-serif md:text-5xl text-3xl">
         Top Selling Items
       </h2>
-      <div className="container  flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif">
+      <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5">
         {isLoading ? (
           <>
             <p>Loading</p>
@@ -67,7 +67,7 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
           <h3 className="my-16 font-serif md:text-5xl text-3xl">Hoodies</h3>
           {isLoading ? (
             <>
@@ -91,7 +91,7 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
           <h3 className="my-16 font-serif md:text-5xl text-3xl">Caps</h3>
           {isLoading ? (
             <>
