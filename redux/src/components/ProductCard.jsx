@@ -19,9 +19,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mb-10">
       <div
-        className={`flex flex-col w-80 h-100 items-center m-5 shadow-xl px-10 border-2 `}
+        className={`flex flex-col  items-center  shadow-xl px-10 border-2 md:w-[300px] w-[200px] md:h-[300px] h-[200px]`}
         onMouseMove={() => setShowPrice(true)}
         onMouseLeave={() => setShowPrice(false)}
         key={product.id}
@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
         <img
           alt={product.name}
           src={product.image.url}
-          className="w-96 h-60 mb-8  "
+          className="w-96 h-60 mb-8 hover:scale-125 transition duration-500 ease-in-out"
           onClick={handleViewDetails}
         />
       </div>
