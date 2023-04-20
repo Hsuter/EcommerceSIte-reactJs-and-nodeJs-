@@ -13,13 +13,13 @@ const Home = () => {
 
   return (
     <div className=" flex flex-col items-center mt-10">
-      <div className={`sm:mt-[-120px] mt-[-28px] `}>
+      <div className={`sm:mt-[-30px] mt-[-28px] banner `}>
         <img src={bunner} alt="bunner" className="" />
       </div>
       <h2 className="my-16 font-serif md:text-5xl text-3xl">
         Top Selling Items
       </h2>
-      <div className="container flex flex-wrap gap-6 justify-around font-serif  ">
+      <div className="container  flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif">
         {isLoading ? (
           <>
             <p>Loading</p>
@@ -29,19 +29,21 @@ const Home = () => {
           <p>An error occured</p>
         ) : (
           <>
-            {data?.map((filteredProduct, i) => (
-              <ProductCard
-                product={filteredProduct}
-                key={filteredProduct._id}
-                i={i}
-              />
-            ))}
+            {data
+              ?.filter((product) => product.rating > 2)
+              .map((filteredProduct, i) => (
+                <ProductCard
+                  product={filteredProduct}
+                  key={filteredProduct._id}
+                  i={i}
+                />
+              ))}
           </>
         )}
       </div>
       <h2 className="my-16 font-serif md:text-5xl text-3xl">Other products</h2>
       <div className="flex flex-row flex-wrap justify-center gap-20 ">
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col flex-wrap items-center ">
           <h3 className="my-16 font-serif md:text-5xl text-3xl">Tshirts</h3>
           {isLoading ? (
             <>

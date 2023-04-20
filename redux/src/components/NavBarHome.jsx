@@ -18,29 +18,27 @@ const NavBarHome = ({ scrollDirection }) => {
     <div className="flex flex-col mb-2">
       <div
         className={`flex flex-row ${
-          scrollDirection ? "" : "bg-white"
-        }   font-serif  items-center fixed  w-full  pr-5  `}
+          scrollDirection ? "bg-black" : "bg-white"
+        }   font-serif  items-center fixed  w-full  pr-5 `}
       >
         <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
           <Link to="/">
             <h2
-              className={`sm:text-3xl  font-bold  ml-7 
-             ${scrollDirection ? "md:text-white" : "text-black"}`}
+              className={`sm:text-3xl text-[15px]  font-bold  ml-7  
+             ${scrollDirection ? "text-white" : "text-black"}`}
             >
               Naxy Brands
             </h2>
           </Link>
 
           <Link to="/Cart">
-            <div className="flex mr-4 items-center justify-center">
+            <div className="flex   items-center justify-center">
               <ShoppingBasket
-                className={` ${
-                  scrollDirection ? "md:text-white" : "text-black"
-                }`}
+                className={` ${scrollDirection ? "text-white" : "text-black"}`}
               />
               <div
                 className={`md:text-[16px] text-[12px] rounded-full  ${
-                  scrollDirection ? "md:text-white" : "text-black"
+                  scrollDirection ? "text-black" : "text-black"
                 } md:p-2 px-2 items-center justify-center text-sm bg-slate-300 m-2 `}
               >
                 <p className="items-center justify-center">
@@ -54,7 +52,7 @@ const NavBarHome = ({ scrollDirection }) => {
         {auth._id ? (
           <div
             className={`flex flex-row  gap-5 w-40  ${
-              scrollDirection ? "md:text-white" : "text-black"
+              scrollDirection ? "text-white" : "text-black"
             } text-[12px] 
             items-center `}
           >
@@ -74,7 +72,7 @@ const NavBarHome = ({ scrollDirection }) => {
         ) : (
           <div
             className={`flex flex-row  gap-5 w-40 ${
-              scrollDirection ? "md:text-white" : "text-black"
+              scrollDirection ? "text-white" : "text-black"
             } text-[12px]  `}
           >
             <Link to="signin">
