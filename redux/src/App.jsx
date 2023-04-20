@@ -25,17 +25,27 @@ import NavBarOther from "./components/NavBarOther";
 const App = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [prevScrollPosition, setPrevScrollPosition] = useState(0);
+  const [windowSize, setWindowSize] = useState(0);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
+    const windowSize = window.innerWidth;
     setPrevScrollPosition(scrollPosition);
     setScrollPosition(position);
+    setWindowSize(windowSize);
   };
 
   useEffect(() => {
-    console.log("Scroll position", { scrollPosition }, "Scroll direction: ", {
-      scrollDirection,
-    });
+    console.log(
+      "Scroll position",
+      { scrollPosition },
+      "Scroll direction: ",
+      {
+        scrollDirection,
+      },
+      "Window size: ",
+      { windowSize }
+    );
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -47,6 +57,10 @@ const App = () => {
     scrollPosition > prevScrollPosition && scrollPosition > 700
       ? false
       : scrollPosition < prevScrollPosition && scrollPosition > 700
+      ? false
+      : scrollPosition > prevScrollPosition &&
+        scrollPosition >= 230 &&
+        windowSize < 1200
       ? false
       : true;
 
@@ -98,8 +112,26 @@ const App = () => {
             </>
           }
         />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route
+          path="/signup"
+          element={
+            <>
+              <NavBarOther />
+
+              <SignUp />
+            </>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <>
+              <NavBarOther />
+
+              <SignIn />
+            </>
+          }
+        />
         <Route path="/tshirt" element={<Tshirts />} />
         <Route
           path="/checkout"
@@ -123,7 +155,16 @@ const App = () => {
           }
         />
 
-        <Route path="/admin" element={<Dashboard />}>
+        <Route
+          path="/admin"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Dashboard />
+            </>
+          }
+        >
           <Route path="products" element={<Products />}>
             <Route path="createproduct" element={<CreateProduct />} />
           </Route>
