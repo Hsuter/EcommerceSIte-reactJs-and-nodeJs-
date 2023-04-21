@@ -15,11 +15,11 @@ const NavBarHome = ({ scrollDirection }) => {
     toast.warning("You've logged out", { position: "top-center" });
   };
   return (
-    <div className="flex flex-col mb-2">
+    <div className="flex flex-col mb-2 ">
       <div
         className={`flex flex-row ${
           scrollDirection ? "bg-white" : "bg-white"
-        }   font-serif  items-center fixed  w-full  pr-5  `}
+        }   font-serif  items-center fixed  w-full  pr-5 z-[12]  `}
       >
         <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
           <Link to="/">

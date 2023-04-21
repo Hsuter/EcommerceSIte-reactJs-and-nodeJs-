@@ -18,8 +18,8 @@ const NavBarHome = ({ scrollDirection }) => {
     <div className="flex flex-col mb-2">
       <div
         className={`flex flex-row ${
-          scrollDirection ? "bg-black" : "bg-white"
-        }   font-serif  items-center fixed  w-full  pr-5 `}
+          scrollDirection ? "bg-blackdark" : "bg-white"
+        }   font-serif  items-center fixed  w-full  pr-5 z-[12]`}
       >
         <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
           <Link to="/">

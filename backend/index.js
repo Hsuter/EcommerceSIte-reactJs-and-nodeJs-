@@ -12,16 +12,22 @@ const login = require("./routes/login");
 const stripe = require("./routes/stripe");
 const productsRoute = require("./routes/products");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 
 //configdotenv
 
 dotenv.config();
 
 //middlewares(use)
+app.use(cors());
 
 app.use(express.json());
 
-app.use(cors({ origin: "*" }));
+const corsOptions = {
+  origin: "http://localhost:5174", // replace with the URL of your frontend
+};
+
+app.use(cors(corsOptions));
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -34,6 +40,9 @@ app.use(
     },
   })
 );
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
 app.use("/api/token", TokenRoute);
 app.use("/api/register", register);
 app.use("/api/login", login);

@@ -18,7 +18,7 @@ const Menu = ({ scrollDirection }) => {
 
   return (
     <div
-      className={`flex flex-col fixed  md:w-full w-full  ${
+      className={`flex flex-col fixed  md:w-full w-full z-[12] ${
         scrollDirection ? "md:bg-transparent bg-white" : "bg-white"
       }   `}
     >

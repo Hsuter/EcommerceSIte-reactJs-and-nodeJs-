@@ -36,16 +36,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(
-      "Scroll position",
-      { scrollPosition },
-      "Scroll direction: ",
-      {
-        scrollDirection,
-      },
-      "Window size: ",
-      { windowSize }
-    );
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
