@@ -16,7 +16,9 @@ const productDetailsSlice = createSlice({
     viewDetails(state, action) {
       state.detailsItems = [];
       localStorage.setItem("detailsItems", JSON.stringify(state.detailsItems));
+      console.log("action.payload", action.payload);
       state.detailsItems.push(action.payload);
+
       localStorage.setItem("detailsItems", JSON.stringify(state.detailsItems));
     },
   },

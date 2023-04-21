@@ -33,13 +33,15 @@ const ProductDetailsCard = ({ detailsItem }) => {
       <div className="flex flex-col  pb-5">
         <h1 className="font-bold text-3xl overline mb-6">{detailsItem.name}</h1>
         <div className="flex bg-white shadow-lg shadow-black border-black sm:w-80 w-52 sm:h-80 h-52  justify-center items-center">
-          <img className="w-[80%] " src={detailsItem.image} />
+          <img
+            className="w-[80%] hover:scale-150 transition duration-500 ease-in-out "
+            src={detailsItem.image.url}
+          />
         </div>
       </div>
       <div className="flex flex-col gap-2 ">
         <div>
           <h2 className="font-bold">Description</h2>
-          <p>xdfcghjfdxgchjbkkxdgcfhvjbknkm</p>
           <p>{detailsItem.dec}</p>
         </div>
         <div>

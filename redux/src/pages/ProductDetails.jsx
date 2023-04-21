@@ -5,6 +5,7 @@ import MarqueeCard from "../components/MarqueeCard";
 import ProductDetailsCard from "../components/ProductDetailsCard";
 
 const ProductDetails = () => {
+  
   const details = useSelector((state) => state.details);
 
   return (
