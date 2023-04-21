@@ -81,7 +81,10 @@ const Home = () => {
               View more
             </Link>
           </div>
-          <Link to="/Tshirts" className="cursor-pointer  md:hidden block">
+          <Link
+            to="/Tshirts"
+            className="cursor-pointer  md:hidden block pl-[43%]"
+          >
             View more
           </Link>
         </div>
@@ -118,7 +121,10 @@ const Home = () => {
               View more
             </Link>
           </div>
-          <Link to="/Hoodies" className="cursor-pointer  md:hidden block">
+          <Link
+            to="/Hoodies"
+            className="cursor-pointer  md:hidden block pl-[43%]"
+          >
             View more
           </Link>
         </div>
@@ -155,7 +161,10 @@ const Home = () => {
               View more
             </Link>
           </div>
-          <Link to="/Caps" className="cursor-pointer  md:hidden block">
+          <Link
+            to="/Caps"
+            className="cursor-pointer  md:hidden block pl-[43%] pb-20"
+          >
             View more
           </Link>
         </div>
