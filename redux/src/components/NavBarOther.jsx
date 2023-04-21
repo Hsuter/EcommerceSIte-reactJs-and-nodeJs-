@@ -30,23 +30,35 @@ const NavBarHome = ({ scrollDirection }) => {
               Naxy Brands
             </h2>
           </Link>
-
-          <Link to="/Cart">
-            <div className="flex mr-4 items-center justify-center">
-              <ShoppingBasket
-                className={` ${scrollDirection ? "text-black" : "text-black"}`}
-              />
-              <div
-                className={`md:text-[16px] text-[12px] rounded-full  ${
-                  scrollDirection ? "text-black" : "text-black"
-                } md:p-2 px-2 items-center justify-center text-sm bg-slate-300 m-2 `}
-              >
-                <p className="items-center justify-center">
-                  {cart.cartTotalsQuantity}
-                </p>
+          <div>
+            <Link to="/Cart" className="md:block hidden">
+              <div className="flex mr-4 items-center justify-center">
+                <ShoppingBasket
+                  className={` ${
+                    scrollDirection ? "text-black" : "text-black"
+                  }`}
+                />
+                <div
+                  className={`md:text-[16px] text-[12px] rounded-full  ${
+                    scrollDirection ? "text-black" : "text-black"
+                  } md:p-2 px-2 items-center justify-center text-sm bg-slate-300 m-2 `}
+                >
+                  <p className="items-center justify-center">
+                    {cart.cartTotalsQuantity}
+                  </p>
+                </div>
               </div>
+            </Link>
+            <div>
+              <p
+                className={`font-serif text-[12px] ${
+                  scrollDirection ? "text-white" : "text-black"
+                }`}
+              >
+                Welcome {auth.name}
+              </p>
             </div>
-          </Link>
+          </div>
         </div>
 
         {auth._id ? (
