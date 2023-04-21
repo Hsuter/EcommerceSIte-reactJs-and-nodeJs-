@@ -24,29 +24,42 @@ const NavBarHome = ({ scrollDirection }) => {
         <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
           <Link to="/">
             <h2
-              className={`sm:text-3xl text-[15px]  font-bold  ml-7  
+              className={`sm:text-3xl text-[15px]  font-bold  md:ml-7 ml-[50px]   
              ${scrollDirection ? "text-white" : "text-black"}`}
             >
               Naxy Brands
             </h2>
           </Link>
 
-          <Link to="/Cart">
-            <div className="flex   items-center justify-center">
-              <ShoppingBasket
-                className={` ${scrollDirection ? "text-white" : "text-black"}`}
-              />
-              <div
-                className={`md:text-[16px] text-[12px] rounded-full  ${
-                  scrollDirection ? "text-black" : "text-black"
-                } md:p-2 px-2 items-center justify-center text-sm bg-slate-300 m-2 `}
-              >
-                <p className="items-center justify-center">
-                  {cart.cartTotalsQuantity}
-                </p>
+          <div className="">
+            <Link to="/Cart" className="md:block hidden">
+              <div className="flex   items-center justify-center ">
+                <ShoppingBasket
+                  className={` ${
+                    scrollDirection ? "text-white" : "text-black"
+                  }`}
+                />
+                <div
+                  className={`md:text-[16px] text-[12px] rounded-full  ${
+                    scrollDirection ? "text-black" : "text-black"
+                  } md:p-2 px-2 items-center justify-center text-sm bg-slate-300 m-2 `}
+                >
+                  <p className="items-center justify-center">
+                    {cart.cartTotalsQuantity}
+                  </p>
+                </div>
               </div>
+            </Link>
+            <div>
+              <p
+                className={`font-serif text-[12px] ${
+                  scrollDirection ? "text-white" : "text-black"
+                }`}
+              >
+                Welcome {auth.name}
+              </p>
             </div>
-          </Link>
+          </div>
         </div>
 
         {auth._id ? (
