@@ -1,4 +1,4 @@
-export const url = "http://localhost:8000/";
+export const url = "https://naxyofficial.herokuapp.com/";
 
 export const setHeaders = () => {
   const headers = {
