@@ -51,7 +51,7 @@ const NavBarHome = ({ scrollDirection }) => {
 
         {auth._id ? (
           <div
-            className={`flex flex-row  gap-5 w-40  ${
+            className={`md:flex flex-row  gap-5 w-40 md.visible hidden  ${
               scrollDirection ? "text-white" : "text-black"
             } text-[12px] 
             items-center `}
@@ -71,7 +71,7 @@ const NavBarHome = ({ scrollDirection }) => {
           </div>
         ) : (
           <div
-            className={`flex flex-row  gap-5 w-40 ${
+            className={`md:flex flex-row  gap-5 w-40 md:visible hidden ${
               scrollDirection ? "text-white" : "text-black"
             } text-[12px]  `}
           >

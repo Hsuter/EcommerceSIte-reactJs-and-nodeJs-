@@ -77,8 +77,11 @@ const Home = () => {
                 </div>
               </>
             )}
+            <Link to="/Tshirts" className="cursor-pointer  md:block hidden ">
+              View more
+            </Link>
           </div>
-          <Link to="/Tshirts" className="cursor-pointer">
+          <Link to="/Tshirts" className="cursor-pointer  md:hidden block">
             View more
           </Link>
         </div>
@@ -111,11 +114,11 @@ const Home = () => {
                 </div>
               </>
             )}
-            <Link to="/Hoodies" className="cursor-pointer  md:visible hidden ">
+            <Link to="/Hoodies" className="cursor-pointer  md:block hidden ">
               View more
             </Link>
           </div>
-          <Link to="/Hoodies" className="cursor-pointer md:hidden visible ">
+          <Link to="/Hoodies" className="cursor-pointer  md:hidden block">
             View more
           </Link>
         </div>
@@ -148,8 +151,11 @@ const Home = () => {
                 </div>
               </>
             )}
+            <Link to="/Caps" className="cursor-pointer  md:block hidden ">
+              View more
+            </Link>
           </div>
-          <Link to="/Caps" className="cursor-pointer">
+          <Link to="/Caps" className="cursor-pointer  md:hidden block">
             View more
           </Link>
         </div>

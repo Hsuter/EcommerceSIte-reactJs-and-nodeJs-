@@ -21,6 +21,7 @@ import Products from "./components/admin/Products";
 import Summary from "./components/admin/Summary";
 import CreateProduct from "./components/admin/CreateProduct";
 import NavBarOther from "./components/NavBarOther";
+import PhoneNavBar from "./components/PhoneNavBar";
 
 const App = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -41,7 +42,7 @@ const App = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollPosition]);
+  }, [scrollPosition, windowSize]);
 
   const scrollDirection =
     scrollPosition > prevScrollPosition && scrollPosition > 700
@@ -69,6 +70,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Tshirts />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
@@ -79,6 +81,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Hoodies />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
@@ -89,6 +92,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Caps />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
@@ -99,6 +103,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <ProductDetails />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
@@ -130,6 +135,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Checkout />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
@@ -141,6 +147,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Cart />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
@@ -152,6 +159,7 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Dashboard />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         >
@@ -167,6 +175,7 @@ const App = () => {
               <NavBarHome scrollDirection={scrollDirection} />
               <Menu scrollDirection={scrollDirection} />
               <Home />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }
         />
