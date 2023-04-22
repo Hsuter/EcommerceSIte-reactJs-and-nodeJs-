@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const PhoneNavBar = () => {
+  const handleScroll = () => {
+    window.scrollTo(0, 0);
+  };
+
   const cart = useSelector((state) => state.cart);
   return (
     <div className="flex flex-row w-full bg-white border-2 border-blackdark z-[9999] fixed bottom-0 justify-around py-2">
@@ -12,7 +16,7 @@ const PhoneNavBar = () => {
           <Home />
         </Link>
       </div>
-      <div>
+      <div onClick={handleScroll}>
         <Link to="/Account">
           <Person />
         </Link>
