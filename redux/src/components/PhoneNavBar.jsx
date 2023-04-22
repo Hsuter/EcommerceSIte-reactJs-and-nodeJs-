@@ -10,7 +10,7 @@ const PhoneNavBar = () => {
 
   const cart = useSelector((state) => state.cart);
   return (
-    <div className="flex flex-row w-full bg-white border-2 border-blackdark z-[9999] fixed bottom-0 justify-around py-2">
+    <div className="flex flex-row w-full bg-white border-2  shadow-lg z-[9999] fixed bottom-0 justify-around py-2">
       <div>
         <Link to="/">
           <Home />
