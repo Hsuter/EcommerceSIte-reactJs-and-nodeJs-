@@ -49,8 +49,8 @@ const Home = () => {
       <h2 className="my-16 font-serif md:text-5xl text-3xl">Other products</h2>
       <div className="flex flex-col  md:gap-20 gap-8 w-[100vw]  ">
         <h3 className=" font-serif md:text-5xl text-3xl">Tshirts</h3>
-        <div className="flex md:flex-row flex-col gap-8  ">
-          <img src={tshirtbunner1} className="sm:w-full w-[100vw] " />
+        <div className="flex xl:flex-row flex-col gap-8  ">
+          <img src={tshirtbunner1} className="sm:w-full w-[100vw]" />
           <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  ">
             {isLoading ? (
               <>
@@ -89,7 +89,7 @@ const Home = () => {
           </Link>
         </div>
         <h3 className=" font-serif md:text-5xl text-3xl">Hoodies</h3>
-        <div className="flex md:flex-row flex-col gap-8 ">
+        <div className="flex xl:flex-row flex-col gap-8 ">
           <img src={hoodiebunner} className="lg:w-full w-[100vw] " />
           <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  ">
             {isLoading ? (
@@ -128,8 +128,8 @@ const Home = () => {
             View more
           </Link>
         </div>
-        <h3 className="font-serif md:text-5xl text-3xl">Caps</h3>
-        <div className="flex md:flex-row flex-col gap-8 ">
+        <h3 className="font-serif md:text-5xl text-3xl ">Caps</h3>
+        <div className="flex xl:flex-row flex-col gap-8 ">
           <img src={capbunner} className="lg:w-full w-[100vw]" />
           <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  ">
             {isLoading ? (

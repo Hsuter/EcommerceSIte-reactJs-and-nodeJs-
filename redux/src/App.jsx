@@ -23,6 +23,7 @@ import CreateProduct from "./components/admin/CreateProduct";
 import NavBarOther from "./components/NavBarOther";
 import PhoneNavBar from "./components/PhoneNavBar";
 import Account from "./pages/Account";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -192,6 +193,7 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 };
