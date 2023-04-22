@@ -42,7 +42,7 @@ const App = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollPosition, windowSize]);
+  }, [scrollPosition, prevScrollPosition, windowSize]);
 
   const scrollDirection =
     scrollPosition > prevScrollPosition && scrollPosition > 700

@@ -15,7 +15,7 @@ const NavBarHome = ({ scrollDirection }) => {
     toast.warning("You've logged out", { position: "top-center" });
   };
   return (
-    <div className="flex flex-col mb-2">
+    <div className="flex  flex-col mb-2">
       <div
         className={`flex flex-row ${
           scrollDirection ? "bg-blackdark" : "bg-white"
@@ -50,14 +50,20 @@ const NavBarHome = ({ scrollDirection }) => {
                 </div>
               </div>
             </Link>
-            <div>
-              <p
-                className={`font-serif text-[12px] ${
-                  scrollDirection ? "text-white" : "text-black"
-                }`}
-              >
-                Welcome {auth.name}
-              </p>
+            <div className="md:hidden visible">
+              {auth._id ? (
+                <p
+                  className={`font-serif text-[12px] ${
+                    scrollDirection ? "text-white" : "text-black"
+                  }`}
+                >
+                  Welcome {auth.name}
+                </p>
+              ) : (
+                <p>
+                  <Link to="/login">Login</Link>
+                </p>
+              )}
             </div>
           </div>
         </div>
