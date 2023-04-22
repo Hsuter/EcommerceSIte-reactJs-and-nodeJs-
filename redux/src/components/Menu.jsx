@@ -13,6 +13,10 @@ import { useState } from "react";
 const Menu = ({ scrollDirection }) => {
   const [menu, setMenu] = useState(false);
 
+  const handleScroll = () => {
+    window.scrollTo(0, 0);
+  };
+
   const toggleMenu = () => {
     if (menu == true) {
       setMenu(false);
@@ -27,6 +31,7 @@ const Menu = ({ scrollDirection }) => {
       className={`flex flex-col fixed md:mt-0 mt-[-25px]  md:w-full w-full z-[12]   ${
         scrollDirection ? "md:bg-transparent " : "bg-white"
       }    `}
+      onClick={handleScroll}
     >
       <div className="bg-slate-100 w-full h-[1px] md:block hidden"></div>
       <div className=" mt-[-26px] ">
@@ -72,7 +77,7 @@ const Menu = ({ scrollDirection }) => {
                 <StoreOutlined />
                 <li onClick={toggleMenu}>Hoodies</li>
               </Link>
-              <Link className="flex flex-row gap-2">
+              <Link className="flex flex-row gap-2" to="/Account">
                 <AccountCircleOutlined />
                 <li onClick={toggleMenu}>Account</li>
               </Link>

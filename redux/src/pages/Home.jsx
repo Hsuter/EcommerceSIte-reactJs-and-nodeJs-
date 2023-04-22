@@ -15,6 +15,10 @@ const Home = () => {
     error,
   } = useSelector((state) => state.products);
 
+  const handleScroll = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className=" flex flex-col mt-10 items-center w-[100vw]">
       <div className={`sm:mt-[-30px] mt-[-50px] banner `}>
@@ -23,7 +27,10 @@ const Home = () => {
       <h2 className="my-16 font-serif md:text-5xl text-3xl">
         Top Selling Items
       </h2>
-      <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5 ">
+      <div
+        className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5 "
+        onClick={handleScroll}
+      >
         {isLoading ? (
           <>
             <p>Loading</p>
@@ -51,7 +58,10 @@ const Home = () => {
         <h3 className=" font-serif md:text-5xl text-3xl">Tshirts</h3>
         <div className="flex xl:flex-row flex-col gap-8  ">
           <img src={tshirtbunner1} className="sm:w-full w-[100vw]" />
-          <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  ">
+          <div
+            className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
+            onClick={handleScroll}
+          >
             {isLoading ? (
               <>
                 <p>Loading</p>
@@ -84,6 +94,7 @@ const Home = () => {
           <Link
             to="/Tshirts"
             className="cursor-pointer  md:hidden block pl-[43%]"
+            onClick={handleScroll}
           >
             View more
           </Link>
@@ -91,7 +102,10 @@ const Home = () => {
         <h3 className=" font-serif md:text-5xl text-3xl">Hoodies</h3>
         <div className="flex xl:flex-row flex-col gap-8 ">
           <img src={hoodiebunner} className="lg:w-full w-[100vw] " />
-          <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  ">
+          <div
+            className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
+            onClick={handleScroll}
+          >
             {isLoading ? (
               <>
                 <p>Loading</p>
@@ -124,6 +138,7 @@ const Home = () => {
           <Link
             to="/Hoodies"
             className="cursor-pointer  md:hidden block pl-[43%]"
+            onClick={handleScroll}
           >
             View more
           </Link>
@@ -131,7 +146,10 @@ const Home = () => {
         <h3 className="font-serif md:text-5xl text-3xl ">Caps</h3>
         <div className="flex xl:flex-row flex-col gap-8 ">
           <img src={capbunner} className="lg:w-full w-[100vw]" />
-          <div className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  ">
+          <div
+            className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
+            onClick={handleScroll}
+          >
             {isLoading ? (
               <>
                 <p>Loading</p>
@@ -164,6 +182,7 @@ const Home = () => {
           <Link
             to="/Caps"
             className="cursor-pointer  md:hidden block pl-[43%] pb-20"
+            onClick={handleScroll}
           >
             View more
           </Link>
