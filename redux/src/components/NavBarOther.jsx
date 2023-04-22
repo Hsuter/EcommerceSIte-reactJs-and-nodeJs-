@@ -21,21 +21,21 @@ const NavBarHome = ({ scrollDirection }) => {
           scrollDirection ? "bg-white" : "bg-white"
         }   font-serif  items-center fixed  w-full  pr-5 z-[12]  `}
       >
-        <div className="w-full  flex justify-between items-center mb-3 mt-2 ">
+        <div className="w-full  flex justify-between items-center mb-3 mt-2   ">
           <Link to="/">
             <h2
-              className={`sm:text-3xl  font-bold  ml-7 
+              className={`sm:text-3xl text-[15px]  font-bold  md:ml-7 ml-[50px]
              ${scrollDirection ? "text-black" : "text-black"}`}
             >
               Naxy Brands
             </h2>
           </Link>
-          <div>
+          <div className="">
             <Link to="/Cart" className="md:block hidden">
-              <div className="flex mr-4 items-center justify-center">
+              <div className="flex   items-center justify-center ">
                 <ShoppingBasket
                   className={` ${
-                    scrollDirection ? "text-black" : "text-black"
+                    scrollDirection ? "text-white" : "text-black"
                   }`}
                 />
                 <div
@@ -49,22 +49,32 @@ const NavBarHome = ({ scrollDirection }) => {
                 </div>
               </div>
             </Link>
-            <div>
-              <p
-                className={`font-serif text-[12px] ${
-                  scrollDirection ? "text-white" : "text-black"
-                }`}
-              >
-                Welcome {auth.name}
-              </p>
+            <div className="md:hidden visible">
+              {auth._id ? (
+                <p
+                  className={`font-serif text-[12px] ${
+                    scrollDirection ? "text-white" : "text-black"
+                  }`}
+                >
+                  Welcome {auth.name}
+                </p>
+              ) : (
+                <p
+                  className={`font-serif text-[12px] ${
+                    scrollDirection ? "text-white" : "text-black"
+                  }`}
+                >
+                  <Link to="/login">Login</Link>
+                </p>
+              )}
             </div>
           </div>
         </div>
 
         {auth._id ? (
           <div
-            className={`md:flex flex-row  gap-5 w-40 md.visible hidden ${
-              scrollDirection ? "text-black" : "text-black"
+            className={`md:flex flex-row  gap-5 w-40 md.visible hidden  ${
+              scrollDirection ? "text-white" : "text-black"
             } text-[12px] 
             items-center `}
           >
@@ -82,14 +92,18 @@ const NavBarHome = ({ scrollDirection }) => {
             </Link>
           </div>
         ) : (
-          <div className="flex flex-row  gap-5 w-40 text-black text-[12px]  ">
+          <div
+            className={`md:flex flex-row  gap-5 w-40 md:visible hidden ${
+              scrollDirection ? "text-white" : "text-black"
+            } text-[12px]  `}
+          >
             <Link to="signin">
               <div>
                 <button className="">Login</button>
               </div>
             </Link>
             <Link to="/signup">
-              <div className="text-black">Register</div>
+              <div className="">Register</div>
             </Link>
           </div>
         )}

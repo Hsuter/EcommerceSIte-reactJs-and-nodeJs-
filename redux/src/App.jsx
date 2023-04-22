@@ -22,6 +22,7 @@ import Summary from "./components/admin/Summary";
 import CreateProduct from "./components/admin/CreateProduct";
 import NavBarOther from "./components/NavBarOther";
 import PhoneNavBar from "./components/PhoneNavBar";
+import Account from "./pages/Account";
 
 const App = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -70,6 +71,17 @@ const App = () => {
               <NavBarOther />
               <Menu />
               <Tshirts />
+              {windowSize < 768 ? <PhoneNavBar /> : null}
+            </>
+          }
+        />
+        <Route
+          path="/Account"
+          element={
+            <>
+              <NavBarOther />
+              <Menu />
+              <Account />
               {windowSize < 768 ? <PhoneNavBar /> : null}
             </>
           }

@@ -60,7 +60,11 @@ const NavBarHome = ({ scrollDirection }) => {
                   Welcome {auth.name}
                 </p>
               ) : (
-                <p>
+                <p
+                  className={`font-serif text-[12px] ${
+                    scrollDirection ? "text-white" : "text-black"
+                  }`}
+                >
                   <Link to="/login">Login</Link>
                 </p>
               )}

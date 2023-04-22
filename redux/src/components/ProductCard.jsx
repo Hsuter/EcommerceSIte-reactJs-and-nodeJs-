@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../features/cartSlice";
 import { viewDetails } from "../features/productDetailsSlice";
-import { ShoppingBasketOutlined, StarBorderTwoTone } from "@material-ui/icons";
+import { StarBorderTwoTone, AddShoppingCart } from "@material-ui/icons";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
         key={product.id}
       >
         <div className="flex w-[135%] z-10">
-          <ShoppingBasketOutlined
+          <AddShoppingCart
             onClick={() => handleAddToCart(product)}
             className="ml-[85%] text-black m-5 cursor-pointer"
           />
