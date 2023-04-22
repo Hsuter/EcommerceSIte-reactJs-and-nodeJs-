@@ -105,8 +105,8 @@ function Footer() {
       </div>
 
       {/*Terms and condition*/}
-      <div className="italic md:ml-[37%] ml-[10%] pb-20 ">
-        Terms and conditions. Developed by @harrysuter.
+      <div className="flex flex-col items-center italic  md:pb-0 pb-20 ">
+        Terms and conditions. <span>Developed by @harrysuter.</span>
       </div>
     </div>
   );
