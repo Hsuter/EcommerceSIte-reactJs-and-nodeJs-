@@ -11,7 +11,7 @@ function Footer() {
             {/*find us*/}
             <div className="flex flex-col gap-8 ">
               <h1 className="underline w-full ">Find us</h1>
-              <div className="flex flex-row sm:gap-20 gap-4">
+              <div className="flex flex-row sm:gap-10 gap-4">
                 <div>
                   <Facebook />
                 </div>
@@ -58,7 +58,7 @@ function Footer() {
         </div>
 
         {/*Stay Connected*/}
-        <div className="flex flex-col mx-2  ">
+        <div className="flex flex-col mx-2 md:items-start items-center mt-[-40px]  ">
           <h1 className="underline mb-6 text-[30px] font-bold">
             Stay connected
           </h1>
@@ -67,7 +67,7 @@ function Footer() {
             Subscribe for exclusive updates, new arrivals & insider only
             discounts
           </p>
-          <div className="w-full">
+          <div className="w-full  ">
             <input
               placeholder="Type your email"
               className="bg-black border-2 h-12 p-2 w-80 sm:mr-10 mr-4"
@@ -105,7 +105,7 @@ function Footer() {
       </div>
 
       {/*Terms and condition*/}
-      <div className="italic ">
+      <div className="italic md:ml-[37%] ml-[10%] pb-20 ">
         Terms and conditions. Developed by @harrysuter.
       </div>
     </div>
