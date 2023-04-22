@@ -13,7 +13,9 @@ const PhoneNavBar = () => {
         </Link>
       </div>
       <div>
-        <Person />
+        <Link to="/Account">
+          <Person />
+        </Link>
       </div>
       <div className="flex flex-row">
         <Link to="/Cart">
