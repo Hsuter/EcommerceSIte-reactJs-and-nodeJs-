@@ -6,12 +6,17 @@ import {
   HomeOutlined,
   AccountCircleOutlined,
   StoreOutlined,
+  SearchOutlined,
+  ArrowDropDown,
 } from "@material-ui/icons";
 
 import { useState } from "react";
 
 const Menu = ({ scrollDirection }) => {
   const [menu, setMenu] = useState(false);
+  const [kidsMenu, setKidsMenu] = useState(false);
+  const [menMenu, setMenMenu] = useState(false);
+  const [womMenu, setWomMenu] = useState(false);
 
   const handleScroll = () => {
     window.scrollTo(0, 0);
@@ -23,7 +28,33 @@ const Menu = ({ scrollDirection }) => {
     } else {
       setMenu(true);
     }
-    console.log(menu);
+  };
+  const toggleMenMenu = () => {
+    if (menMenu == true) {
+      setMenMenu(false);
+    } else {
+      setMenMenu(true);
+      setWomMenu(false);
+      setKidsMenu(false);
+    }
+  };
+  const toggleWomMenu = () => {
+    if (womMenu == true) {
+      setWomMenu(false);
+    } else {
+      setWomMenu(true);
+      setMenMenu(false);
+      setKidsMenu(false);
+    }
+  };
+  const toggleKidsMenu = () => {
+    if (kidsMenu == true) {
+      setKidsMenu(false);
+    } else {
+      setKidsMenu(true);
+      setMenMenu(false);
+      setWomMenu(false);
+    }
   };
 
   return (
@@ -51,33 +82,182 @@ const Menu = ({ scrollDirection }) => {
           )}
         </div>
         <div
-          className={`bg-white md:hidden  h-[100vh] flex   ${
+          className={`bg-white md:hidden justify-center  h-[100vh] flex   ${
             menu ? "visible animate-slideleft" : "hidden animate-slideright"
           } `}
         >
           <div
-            className={`${
+            className={`w-full ${
               menu ? "visible animate-slideleft" : "hidden animate-slideright"
             } `}
           >
-            <ul className="flex md:flex-row flex-col justify-around md:my-2 mt-5 font-serif cursor-pointer ml-6  text-black md:gap-0 gap-20">
-              <Link to="/" className="flex flex-row gap-2">
-                <HomeOutlined />
-                <li onClick={toggleMenu}>Home</li>
-              </Link>
-              <Link to="/Tshirts" className="flex flex-row gap-2">
-                <StoreOutlined />
-                <li onClick={toggleMenu}>Tshirts</li>
-              </Link>
-              <Link to="/Caps" className="flex flex-row gap-2">
-                <StoreOutlined />
-                <li onClick={toggleMenu}>Caps</li>
-              </Link>
-              <Link to="/Hoodies" className="flex flex-row gap-2">
-                <StoreOutlined />
-                <li onClick={toggleMenu}>Hoodies</li>
-              </Link>
-              <Link className="flex flex-row gap-2" to="/Account">
+            <div className="w-full  border-2 shadow-lg border-black  ">
+              <input
+                placeholder=""
+                className="border-2 shadow-lg w-[88%] h-10 mr-2"
+              />
+
+              <span>
+                <SearchOutlined className="" />
+              </span>
+            </div>
+
+            <ul className="flex md:flex-row flex-col justify-around md:my-2  font-serif cursor-pointer   text-black md:gap-0  w-full items-center ">
+              <div className="flex flex-row bg-slate-200  w-full justify-center ">
+                <div className="flex flex-row  py-4 ">
+                  <h1 className="font-bold">MENU</h1>
+                </div>
+              </div>
+              {/* Men*/}
+              <div className="flex flex-col w-full">
+                <div
+                  className={`flex flex-row gap-2 w-full  border-2 shadow-lg h-10 items-center ${
+                    menMenu ? "bg-slate-300" : null
+                  }  `}
+                >
+                  <StoreOutlined />
+                  <h2 onClick={toggleMenu} className="w-full">
+                    Men
+                  </h2>
+                  <div
+                    className={`border-x-2 px-2 cursor-pointer `}
+                    onClick={toggleMenMenu}
+                  >
+                    <ArrowDropDown />
+                  </div>
+                </div>
+
+                {/*Dropdown*/}
+                <div
+                  className={`flex flex-col   cursor-pointer ${
+                    menMenu ? "visible " : "hidden "
+                  }`}
+                >
+                  <ul className="" onClick={toggleMenu}>
+                    <li className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full   hover:bg-slate-200 ">
+                      <Link to="/Tshirts">Tshirts</Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/Hoodies"
+                        className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full  hover:bg-slate-200  "
+                      >
+                        Hoodies
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/Caps"
+                        className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full hover:bg-slate-200  "
+                      >
+                        Caps
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Women*/}
+              <div className="flex flex-col w-full">
+                <div
+                  className={`flex flex-row gap-2 w-full  border-2 shadow-lg h-10 items-center ${
+                    womMenu ? "bg-slate-300" : null
+                  }  `}
+                >
+                  <StoreOutlined />
+                  <h2 onClick={toggleMenu} className="w-full">
+                    Women
+                  </h2>
+                  <div
+                    className={`border-x-2 px-2 cursor-pointer `}
+                    onClick={toggleWomMenu}
+                  >
+                    <ArrowDropDown />
+                  </div>
+                </div>
+
+                {/*Dropdown*/}
+                <div
+                  className={`flex flex-col   cursor-pointer ${
+                    womMenu ? "visible " : "hidden "
+                  }`}
+                >
+                  <ul onClick={toggleMenu}>
+                    <li className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full  hover:bg-slate-200 ">
+                      <Link to="/Tshirts">Tshirts</Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/Hoodies"
+                        className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full  hover:bg-slate-200  "
+                      >
+                        Hoodies
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/Caps"
+                        className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full hover:bg-slate-200   "
+                      >
+                        Caps
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Kids*/}
+              <div className="flex flex-col w-full">
+                <div
+                  className={`flex flex-row gap-2 w-full  border-2 shadow-lg h-10 items-center ${
+                    kidsMenu ? "bg-slate-300" : null
+                  }  `}
+                >
+                  <StoreOutlined />
+                  <h2 onClick={toggleMenu} className="w-full ">
+                    Kids
+                  </h2>
+                  <div
+                    className={`border-x-2 px-2 cursor-pointer `}
+                    onClick={toggleKidsMenu}
+                  >
+                    <ArrowDropDown />
+                  </div>
+                </div>
+
+                {/*Dropdown*/}
+                <div
+                  className={`flex flex-col   cursor-pointer ${
+                    kidsMenu ? "visible " : "hidden "
+                  }`}
+                >
+                  <ul className=" " onClick={toggleMenu}>
+                    <li className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full hover:bg-slate-200  ">
+                      <Link to="/Tshirts">Tshirts</Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/Hoodies"
+                        className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full hover:bg-slate-200   "
+                      >
+                        Hoodies
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/Caps"
+                        className="flex flex-row gap-2 border-2 shadow-lg h-10 items-center w-full hover:bg-slate-200  "
+                      >
+                        Caps
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <Link
+                className="flex flex-row gap-2 border-2 shadow-lg h-10 w-full items-center justify-center"
+                to="/Account"
+              >
                 <AccountCircleOutlined />
                 <li onClick={toggleMenu}>Account</li>
               </Link>
