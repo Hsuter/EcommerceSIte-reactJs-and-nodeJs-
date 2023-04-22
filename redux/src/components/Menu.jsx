@@ -58,23 +58,23 @@ const Menu = ({ scrollDirection }) => {
             <ul className="flex md:flex-row flex-col justify-around md:my-2 mt-5 font-serif cursor-pointer ml-6  text-black md:gap-0 gap-20">
               <Link to="/" className="flex flex-row gap-2">
                 <HomeOutlined />
-                <li>Home</li>
+                <li onClick={toggleMenu}>Home</li>
               </Link>
               <Link to="/Tshirts" className="flex flex-row gap-2">
                 <StoreOutlined />
-                <li>Tshirts</li>
+                <li onClick={toggleMenu}>Tshirts</li>
               </Link>
               <Link to="/Caps" className="flex flex-row gap-2">
                 <StoreOutlined />
-                <li>Caps</li>
+                <li onClick={toggleMenu}>Caps</li>
               </Link>
               <Link to="/Hoodies" className="flex flex-row gap-2">
                 <StoreOutlined />
-                <li>Hoodies</li>
+                <li onClick={toggleMenu}>Hoodies</li>
               </Link>
               <Link className="flex flex-row gap-2">
                 <AccountCircleOutlined />
-                <li>Account</li>
+                <li onClick={toggleMenu}>Account</li>
               </Link>
             </ul>
           </div>
