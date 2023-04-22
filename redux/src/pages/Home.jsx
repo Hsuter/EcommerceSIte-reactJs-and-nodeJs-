@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className=" flex flex-col mt-10 items-center w-[100vw]">
-      <div className={`sm:mt-[-30px] mt-[-28px] banner `}>
+      <div className={`sm:mt-[-30px] mt-[-50px] banner `}>
         <img src={bunner} alt="bunner" className="" />
       </div>
       <h2 className="my-16 font-serif md:text-5xl text-3xl">

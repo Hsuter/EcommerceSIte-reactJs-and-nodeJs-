@@ -22,7 +22,7 @@ const Menu = ({ scrollDirection }) => {
         scrollDirection ? "md:bg-transparent bg-white" : "bg-white"
       }   `}
     >
-      <div className="bg-slate-100 w-full h-[1px]"></div>
+      <div className="bg-slate-100 w-full h-[1px] md:block hidden"></div>
       <div className=" mt-[-50.9px] ">
         <div
           className={`flex md:hidden mb-3  ${
@@ -91,7 +91,7 @@ const Menu = ({ scrollDirection }) => {
           </ul>
         </div>
       </div>
-      <div className="bg-slate-200 w-full text-[1px]">.</div>
+      <div className="bg-slate-200 w-full text-[1px]  md:block hidden">.</div>
     </div>
   );
 };
