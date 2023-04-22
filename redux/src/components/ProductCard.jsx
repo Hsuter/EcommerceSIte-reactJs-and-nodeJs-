@@ -11,7 +11,9 @@ const ProductCard = ({ product }) => {
   let stars = [];
   const productRating = () => {
     for (let i = 0; i < product.ratings; i++) {
-      stars.push(<StarBorderTwoTone className="text-yellow-400 " />);
+      stars.push(
+        <StarBorderTwoTone className="text-yellow-400 " index={i} key={i} />
+      );
     }
 
     return stars;
