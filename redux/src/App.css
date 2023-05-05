@@ -49,3 +49,12 @@
     height: 10px !important;
 
 }
+
+.person {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.menu{
+    z-index: 999;
+}

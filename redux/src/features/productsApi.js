@@ -10,16 +10,11 @@ export const productsApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getAllHoodies: builder.query({ query: () => "products/hoodies" }),
-    getAllTshirts: builder.query({ query: () => "/products/tshirts" }),
-    getAllCaps: builder.query({ query: () => "products" }),
-    getAllStickers: builder.query({ query: () => "products/stickers" }),
+    getSpecificProduct: builder.query({
+      query: ({ gender, category, age }) =>
+        `api/products?gender=${gender}&category=${category}&age=${age}`,
+    }),
   }),
 });
 
-export const {
-  useGetAllHoodiesQuery,
-  useGetAllCapsQuery,
-  useGetAllStickersQuery,
-  useGetAllTshirtsQuery,
-} = productsApi;
+export const { useGetSpecificProductQuery } = productsApi;

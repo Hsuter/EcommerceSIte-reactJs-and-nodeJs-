@@ -1,6 +1,5 @@
 import React from "react";
 import ProductCard from "../components/ProductCard";
-import { useGetAllCapsQuery } from "../features/productsApi";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 

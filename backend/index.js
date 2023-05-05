@@ -3,7 +3,6 @@
 const helmet = require("helmet");
 const express = require("express");
 const cors = require("cors");
-const products = require("./products");
 const mongoose = require("mongoose");
 const app = express();
 const TokenRoute = require("./routes/token");
@@ -21,10 +20,8 @@ dotenv.config();
 //middlewares(use)
 app.use(cors());
 
-app.use(express.json());
-
 const corsOptions = {
-  origin: "http://localhost:5174", // replace with the URL of your frontend
+  origin: "http://localhost:5173", // replace with the URL of your frontend
 };
 
 app.use(cors(corsOptions));
@@ -41,8 +38,8 @@ app.use(
   })
 );
 app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-
+app.use(bodyParser.urlencoded({ limit: "500mb", extended: true }));
+app.use(express.json());
 app.use("/api/token", TokenRoute);
 app.use("/api/register", register);
 app.use("/api/login", login);
@@ -52,10 +49,6 @@ app.use("/api/products", productsRoute);
 //get request
 app.get("/", (req, res) => {
   res.send("Welcome to our online shop API");
-});
-
-app.get("/products", (req, res) => {
-  res.send(products);
 });
 
 //listen

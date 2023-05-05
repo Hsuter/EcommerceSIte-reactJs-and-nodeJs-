@@ -5,7 +5,6 @@ import MarqueeCard from "../components/MarqueeCard";
 import ProductDetailsCard from "../components/ProductDetailsCard";
 
 const ProductDetails = () => {
-  
   const details = useSelector((state) => state.details);
 
   return (
@@ -13,7 +12,7 @@ const ProductDetails = () => {
       {details.detailsItems.map((detailsItem, i) => (
         <ProductDetailsCard
           detailsItem={detailsItem}
-          key={detailsItem.id}
+          key={detailsItem._id}
           i={i}
         />
       ))}
@@ -21,7 +20,7 @@ const ProductDetails = () => {
       <div className="flex  flex-col items-center  ">
         <p className="mt-10 font-serif ">Similar Products</p>
         <div className="flex ">
-          <MarqueeCard />
+          <MarqueeCard/>
         </div>
       </div>
     </div>
