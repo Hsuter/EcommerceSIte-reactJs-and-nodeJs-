@@ -24,22 +24,26 @@ import NavBarOther from "./components/NavBarOther";
 import PhoneNavBar from "./components/PhoneNavBar";
 import Account from "./pages/Account";
 import Footer from "./components/Footer";
+import SearchResults from "./pages/SearchResults";
+import FilteredProducts from "./pages/FilteredProducts";
 
 const App = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [prevScrollPosition, setPrevScrollPosition] = useState(0);
   const [windowSize, setWindowSize] = useState(0);
+  const [menu, setMenu] = useState(false);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
-    const windowSize = window.innerWidth;
+
     setPrevScrollPosition(scrollPosition);
     setScrollPosition(position);
-    setWindowSize(windowSize);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
+    const windowSize = window.innerWidth;
+    setWindowSize(windowSize);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -70,9 +74,37 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Tshirts />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
+            </>
+          }
+        />
+        <Route
+          path="/SearchResults"
+          element={
+            <>
+              <NavBarOther />
+              <Menu menu={menu} setMenu={setMenu} />
+              <SearchResults />
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
+            </>
+          }
+        />
+        <Route
+          path="/FilteredResults"
+          element={
+            <>
+              <NavBarOther />
+              <Menu menu={menu} setMenu={setMenu} />
+              <FilteredProducts />
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -81,9 +113,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Account />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -92,9 +126,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Hoodies />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -103,9 +139,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Caps />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -114,9 +152,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <ProductDetails />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -146,9 +186,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Checkout />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -158,9 +200,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Cart />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />
@@ -170,9 +214,11 @@ const App = () => {
           element={
             <>
               <NavBarOther />
-              <Menu />
+              <Menu menu={menu} setMenu={setMenu} />
               <Dashboard />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         >
@@ -186,9 +232,15 @@ const App = () => {
           element={
             <>
               <NavBarHome scrollDirection={scrollDirection} />
-              <Menu scrollDirection={scrollDirection} />
+              <Menu
+                scrollDirection={scrollDirection}
+                menu={menu}
+                setMenu={setMenu}
+              />
               <Home />
-              {windowSize < 768 ? <PhoneNavBar /> : null}
+              {windowSize < 768 ? (
+                <PhoneNavBar menu={menu} setMenu={setMenu} />
+              ) : null}
             </>
           }
         />

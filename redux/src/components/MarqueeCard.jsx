@@ -23,11 +23,8 @@ const MarqueeCard = () => {
           <>
             {data.map((product, i) => (
               <>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="flex flex-col mx-4 border-x-2  w-[200px] justify-center items-center  h-[100%]   "
-                    key={product.id}
-                  >
+                <div className="flex flex-col items-center" key={product._id}>
+                  <div className="flex flex-col mx-4 border-x-2  w-[200px] justify-center items-center  h-[100%]">
                     <img
                       className="w-[100px] "
                       src={product.image.url}
@@ -53,11 +50,8 @@ const MarqueeCard = () => {
           <>
             {data.map((product, i) => (
               <>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="flex flex-col mx-4 border-x-2  w-[200px] justify-center items-center  h-[100%] "
-                    key={product.id}
-                  >
+                <div className="flex flex-col items-center" key={product._id}>
+                  <div className="flex flex-col mx-4 border-x-2  w-[200px] justify-center items-center  h-[100%] ">
                     <img
                       className="w-[100px]"
                       src={product.image.url}

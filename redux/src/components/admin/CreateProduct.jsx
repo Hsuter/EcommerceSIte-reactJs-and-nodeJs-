@@ -10,6 +10,8 @@ const CreateProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [desc, setDesc] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
 
   const handleProductImageUpload = (e) => {
     const file = e.target.files[0];
@@ -40,6 +42,8 @@ const CreateProduct = () => {
         price,
         desc,
         image: productImg,
+        gender,
+        age,
       })
     );
   };
@@ -88,19 +92,6 @@ const CreateProduct = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="image">Image</label>
-
-            <input
-              type="file"
-              accept="image/*"
-              name="image"
-              id="image"
-              className="border-2 border-gray-300 p-2 rounded-lg"
-              onChange={handleProductImageUpload}
-            />
-          </div>
-
-          <div className="flex flex-col">
             <label htmlFor="category">Category</label>
             <select
               name="category"
@@ -114,7 +105,51 @@ const CreateProduct = () => {
               <option value="Tshirt">Tshirt</option>
               <option value="Hoodies">Hoodies</option>
               <option value="Cap">Cap</option>
+              <option value="Footware">Footware</option>
             </select>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="category">Gender</label>
+            <select
+              name="category"
+              id="category"
+              className="border-2 border-gray-300 p-2 rounded-lg"
+              onChange={(e) => {
+                setGender(e.target.value);
+              }}
+            >
+              <option value="">Select</option>
+              <option value="Male">Men</option>
+              <option value="Female">Women</option>
+              <option value="Both">Both</option>
+            </select>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="category">Age category</label>
+            <select
+              name="category"
+              id="category"
+              className="border-2 border-gray-300 p-2 rounded-lg"
+              onChange={(e) => {
+                setAge(e.target.value);
+              }}
+            >
+              <option value="">Select</option>
+              <option value="Adult">Adult</option>
+              <option value="Kids">Kids</option>
+            </select>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="image">Image</label>
+
+            <input
+              type="file"
+              accept="image/*"
+              name="image"
+              id="image"
+              className="border-2 border-gray-300 p-2 rounded-lg"
+              onChange={handleProductImageUpload}
+            />
           </div>
         </div>
         <div>

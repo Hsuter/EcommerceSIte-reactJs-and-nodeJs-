@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <div className=" flex flex-col mt-10 items-center w-[100vw]">
-      <div className={`sm:mt-[-30px] mt-[-50px] banner `}>
+      <div className={`sm:mt-[-50px] mt-[-50px] banner `}>
         <img src={bunner} alt="bunner" className="" />
       </div>
       <h2 className="my-16 font-serif md:text-5xl text-3xl">
@@ -71,8 +71,8 @@ const Home = () => {
               <p>An error occured</p>
             ) : (
               <>
-                <div className="flex flex-col">
-                  <div className="flex flex-row md:flex-wrap flex-nowrap gap-8 mt-6">
+                <div className="flex flex-col ">
+                  <div className="flex flex-row md:flex-wrap flex-nowrap gap-8 mt-6  justify-center ">
                     {data
                       ?.filter((product) => product.category == "Tshirt")
                       .splice(0, 4)
@@ -87,13 +87,16 @@ const Home = () => {
                 </div>
               </>
             )}
-            <Link to="/Tshirts" className="cursor-pointer  md:block hidden ">
+            <Link
+              to="/Tshirts"
+              className="cursor-pointer  md:flex hidden border-2 border-black  p-2  items-center justify-center"
+            >
               View more
             </Link>
           </div>
           <Link
             to="/Tshirts"
-            className="cursor-pointer  md:hidden block pl-[43%]"
+            className="cursor-pointer  md:hidden flex  border-2 border-black p-2 justify-center"
             onClick={handleScroll}
           >
             View more
@@ -115,8 +118,8 @@ const Home = () => {
               <p>An error occured</p>
             ) : (
               <>
-                <div className="flex flex-col">
-                  <div className="flex flex-row md:flex-wrap flex-nowrap gap-8 mt-6">
+                <div className="flex flex-col ">
+                  <div className="flex flex-row md:flex-wrap flex-nowrap gap-8 mt-6  justify-center">
                     {data
                       ?.filter((product) => product.category == "Hoodies")
                       .splice(0, 4)
@@ -131,20 +134,23 @@ const Home = () => {
                 </div>
               </>
             )}
-            <Link to="/Hoodies" className="cursor-pointer  md:block hidden ">
+            <Link
+              to="/Hoodies"
+              className="cursor-pointer  md:flex hidden border-2 border-black  p-2  items-center justify-center"
+            >
               View more
             </Link>
           </div>
           <Link
             to="/Hoodies"
-            className="cursor-pointer  md:hidden block pl-[43%]"
+            className="cursor-pointer  md:hidden flex  border-2 border-black p-2 justify-center"
             onClick={handleScroll}
           >
             View more
           </Link>
         </div>
         <h3 className="font-serif md:text-5xl text-3xl ">Caps</h3>
-        <div className="flex xl:flex-row flex-col gap-8 ">
+        <div className="flex xl:flex-row flex-col gap-8">
           <img src={capbunner} className="lg:w-full w-[100vw]" />
           <div
             className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
@@ -160,7 +166,7 @@ const Home = () => {
             ) : (
               <>
                 <div className="flex flex-col">
-                  <div className="flex flex-row md:flex-wrap flex-nowrap gap-8 mt-6">
+                  <div className="flex flex-row md:flex-wrap flex-nowrap gap-8 mt-6 justify-center">
                     {data
                       ?.filter((product) => product.category == "Cap")
                       .splice(0, 4)
@@ -175,16 +181,19 @@ const Home = () => {
                 </div>
               </>
             )}
-            <Link to="/Caps" className="cursor-pointer  md:block hidden ">
+            <Link
+              to="/Caps"
+              className="cursor-pointer  md:flex hidden border-2 border-black px-2 my-[80px] items-center justify-center"
+            >
               View more
             </Link>
           </div>
           <Link
             to="/Caps"
-            className="cursor-pointer  md:hidden block pl-[43%] pb-20"
+            className="  cursor-pointer  md:hidden flex  mb-20 border-2 border-black p-2  justify-center "
             onClick={handleScroll}
           >
-            View more
+            <button>View more</button>
           </Link>
         </div>
       </div>

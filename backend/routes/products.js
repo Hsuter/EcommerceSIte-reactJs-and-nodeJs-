@@ -8,7 +8,7 @@ const router = express.Router();
 //create a new product
 
 router.post("/", isAdmin, async (req, res) => {
-  const { name, desc, price, image, category } = req.body;
+  const { name, desc, price, image, category, gender, age } = req.body;
 
   try {
     if (image) {
@@ -23,6 +23,8 @@ router.post("/", isAdmin, async (req, res) => {
           price,
           image: uploadedResponse,
           category,
+          gender,
+          age,
         });
 
         const savedProduct = await product.save();
@@ -36,9 +38,24 @@ router.post("/", isAdmin, async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
+  const { category, gender, age } = req.query;
+  let query = {};
+
+  if (category) {
+    query.category = category;
+  }
+
+  if (gender) {
+    query.gender = gender;
+  }
+
+  if (age) {
+    query.age = age;
+  }
+
   try {
-    const product = await Product.find();
-    res.status(200).send(product);
+    const products = await Product.find(query);
+    res.status(200).send(products);
   } catch (error) {
     res.status(500).send(error);
   }
