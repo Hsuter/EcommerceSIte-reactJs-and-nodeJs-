@@ -302,7 +302,7 @@ const Menu = ({ scrollDirection, setMenu, menu }) => {
     if (menu == true) {
       setMenu(false);
     }
-  }, [age, category, gender]);
+  }, [age, gender, category]);
 
   return (
     <div
