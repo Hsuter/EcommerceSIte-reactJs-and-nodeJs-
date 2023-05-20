@@ -20,7 +20,7 @@ function Checkout() {
   const payHandler = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:4000/api/token", {
+      .post("http://localhost:8000/api/token", {
         phone,
         amount,
       })

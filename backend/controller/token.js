@@ -1,8 +1,8 @@
 const axios = require("axios");
 
 const createToken = async (req, res, next) => {
-  const secret = "8DJEVtAD7LF5bM5b";
-  const consumer = "lp2yawwwRv2h7K9XIZAf1vlaIW3cnRwL";
+  const secret = "46etCHCBZ31er1Lu";
+  const consumer = "h9FIcyFuvHHUkQBUswxfKOGBGuAsInaB";
   const auth = new Buffer.from(`${consumer}:${secret}`).toString("base64");
 
   await axios
