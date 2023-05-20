@@ -21,7 +21,7 @@ dotenv.config();
 app.use(cors());
 
 const corsOptions = {
-  origin: "http://localhost:5173", // replace with the URL of your frontend
+  origin: "https://naxybrands.vercel.app/", // replace with the URL of your frontend
 };
 
 app.use(cors(corsOptions));
