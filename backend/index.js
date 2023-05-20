@@ -20,7 +20,6 @@ dotenv.config();
 //middlewares(use)
 app.use(cors());
 
-app.use(cors(corsOptions));
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
