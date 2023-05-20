@@ -20,10 +20,6 @@ dotenv.config();
 //middlewares(use)
 app.use(cors());
 
-const corsOptions = {
-  origin: "https://naxybrands.vercel.app/", // replace with the URL of your frontend
-};
-
 app.use(cors(corsOptions));
 app.use(
   helmet.contentSecurityPolicy({
