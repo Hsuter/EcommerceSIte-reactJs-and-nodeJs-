@@ -12,6 +12,7 @@ const stripe = require("./routes/stripe");
 const productsRoute = require("./routes/products");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 //configdotenv
 
@@ -42,8 +43,13 @@ app.use("/api/stripe", stripe);
 app.use("/api/products", productsRoute);
 
 //get request
-app.get("/", (req, res) => {
-  res.send("Welcome to our online shop API");
+
+// Serve static files
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+// Catch-all route for client-side routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 //listen
