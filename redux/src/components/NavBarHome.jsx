@@ -50,7 +50,7 @@ const NavBarHome = ({ scrollDirection }) => {
     toast.warning("You've logged out", { position: "top-center" });
   };
   return (
-    <div className="flex  flex-col xl:mb-4  mb-2">
+    <div className="flex  flex-col xl:mb-4  mb-2 ">
       <div
         className={`flex flex-row ${
           scrollDirection ? "bg-black z-50" : "bg-white z-50"
