@@ -138,10 +138,12 @@ const NavBarHome = ({ scrollDirection }) => {
               </Link>
             ) : null}
 
-            <div>
-              <p className="flex flex-col items-center ">
-                <Person className="person" />
-                <p className="sm:flex hidden"> {auth.name}</p>
+            <div className="  ">
+              <p className="flex flex-col    ">
+                <div className="md:flex hidden">
+                  <Person className=" idden person" />
+                </div>
+                <p className="sm:flex flex text-white"> {auth.name} </p>
               </p>
             </div>
             <Link to="/signin">
