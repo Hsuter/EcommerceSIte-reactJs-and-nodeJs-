@@ -310,7 +310,7 @@ const Menu = ({ scrollDirection, setMenu, menu }) => {
 
   return (
     <div
-      className={`flex flex-col fixed mt-[-25px]  md:w-full w-full menu bg-white ${
+      className={`flex flex-col fixed mt-[-25px]  md:w-full w-full menu bg-black ${
         scrollDirection ? "md:bg-transparent " : "bg-white"
       }`}
       onClick={handleScroll}
