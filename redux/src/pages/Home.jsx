@@ -33,8 +33,10 @@ const Home = () => {
       >
         {isLoading ? (
           <>
-            <p>Loading</p>
-            <CircularProgress />
+            <div className="text-black">
+              <p>Loading</p>
+              <CircularProgress />
+            </div>
           </>
         ) : error ? (
           <p>An error occured</p>
@@ -64,8 +66,10 @@ const Home = () => {
           >
             {isLoading ? (
               <>
-                <p>Loading</p>
-                <CircularProgress />
+                <div className="text-black">
+                  <p>Loading</p>
+                  <CircularProgress />
+                </div>
               </>
             ) : error ? (
               <p>An error occured</p>
@@ -111,8 +115,10 @@ const Home = () => {
           >
             {isLoading ? (
               <>
-                <p>Loading</p>
-                <CircularProgress />
+                <div className="text-black">
+                  <p>Loading</p>
+                  <CircularProgress />
+                </div>
               </>
             ) : error ? (
               <p>An error occured</p>
@@ -158,8 +164,10 @@ const Home = () => {
           >
             {isLoading ? (
               <>
-                <p>Loading</p>
-                <CircularProgress />
+                <div className="text-black">
+                  <p>Loading</p>
+                  <CircularProgress />
+                </div>
               </>
             ) : error ? (
               <p>An error occured</p>

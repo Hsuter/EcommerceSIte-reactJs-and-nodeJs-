@@ -298,9 +298,13 @@ const Menu = ({ scrollDirection, setMenu, menu }) => {
   }
 
   useEffect(() => {
-    navigate("/FilteredResults", { state: { filters } });
-    if (menu == true) {
-      setMenu(false);
+    if (age == "" && gender == "" && category == "") {
+      null;
+    } else {
+      navigate("/FilteredResults", { state: { filters } });
+      if (menu == true) {
+        setMenu(false);
+      }
     }
   }, [age, gender, category]);
 
