@@ -33,7 +33,7 @@ const Home = () => {
       >
         {isLoading ? (
           <>
-            <div className="text-black">
+            <div>
               <p>Loading</p>
               <CircularProgress />
             </div>
@@ -66,7 +66,7 @@ const Home = () => {
           >
             {isLoading ? (
               <>
-                <div className="text-black">
+                <div>
                   <p>Loading</p>
                   <CircularProgress />
                 </div>
@@ -95,7 +95,13 @@ const Home = () => {
               to="/Tshirts"
               className="cursor-pointer  md:flex hidden border-2 border-black  p-2  items-center justify-center"
             >
-              View more
+              {isLoading ? (
+                <>
+                  <CircularProgress />
+                </>
+              ) : (
+                <button>View more</button>
+              )}
             </Link>
           </div>
           <Link
@@ -103,7 +109,13 @@ const Home = () => {
             className="cursor-pointer  md:hidden flex  border-2 border-black p-2 justify-center"
             onClick={handleScroll}
           >
-            View more
+            {isLoading ? (
+              <>
+                <CircularProgress />
+              </>
+            ) : (
+              <button>View more</button>
+            )}
           </Link>
         </div>
         <h3 className=" font-serif md:text-5xl text-3xl">Hoodies</h3>
@@ -115,7 +127,7 @@ const Home = () => {
           >
             {isLoading ? (
               <>
-                <div className="text-black">
+                <div>
                   <p>Loading</p>
                   <CircularProgress />
                 </div>
@@ -144,7 +156,13 @@ const Home = () => {
               to="/Hoodies"
               className="cursor-pointer  md:flex hidden border-2 border-black  p-2  items-center justify-center"
             >
-              View more
+              {isLoading ? (
+                <>
+                  <CircularProgress />
+                </>
+              ) : (
+                <button>View more</button>
+              )}
             </Link>
           </div>
           <Link
@@ -152,7 +170,13 @@ const Home = () => {
             className="cursor-pointer  md:hidden flex  border-2 border-black p-2 justify-center"
             onClick={handleScroll}
           >
-            View more
+            {isLoading ? (
+              <>
+                <CircularProgress />
+              </>
+            ) : (
+              <button>View more</button>
+            )}
           </Link>
         </div>
         <h3 className="font-serif md:text-5xl text-3xl ">Caps</h3>
@@ -164,7 +188,7 @@ const Home = () => {
           >
             {isLoading ? (
               <>
-                <div className="text-black">
+                <div>
                   <p>Loading</p>
                   <CircularProgress />
                 </div>
@@ -193,7 +217,13 @@ const Home = () => {
               to="/Caps"
               className="cursor-pointer  md:flex hidden border-2 border-black px-2 my-[80px] items-center justify-center"
             >
-              View more
+              {isLoading ? (
+                <>
+                  <CircularProgress />
+                </>
+              ) : (
+                <button>View more</button>
+              )}
             </Link>
           </div>
           <Link
@@ -201,7 +231,13 @@ const Home = () => {
             className="  cursor-pointer  md:hidden flex  mb-20 border-2 border-black p-2  justify-center "
             onClick={handleScroll}
           >
-            <button>View more</button>
+            {isLoading ? (
+              <>
+                <CircularProgress />
+              </>
+            ) : (
+              <button>View more</button>
+            )}
           </Link>
         </div>
       </div>
