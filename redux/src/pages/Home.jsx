@@ -9,11 +9,7 @@ import { capbunner } from "../assets";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const {
-    items: data,
-    isLoading,
-    error,
-  } = useSelector((state) => state.products);
+  const { items: data, status, error } = useSelector((state) => state.products);
 
   const handleScroll = () => {
     window.scrollTo(0, 0);
@@ -31,15 +27,13 @@ const Home = () => {
         className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5 "
         onClick={handleScroll}
       >
-        {isLoading ? (
+        {status == "pending" ? (
           <>
-            <div>
-              <p>Loading</p>
-              <CircularProgress />
-            </div>
+            <p>Loading</p>
+            <CircularProgress />
           </>
-        ) : error ? (
-          <p>An error occured</p>
+        ) : status == "rejected" ? (
+          <p>An error occurred</p>
         ) : (
           <>
             {data
@@ -64,15 +58,13 @@ const Home = () => {
             className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
             onClick={handleScroll}
           >
-            {isLoading ? (
+            {status == "pending" ? (
               <>
-                <div>
-                  <p>Loading</p>
-                  <CircularProgress />
-                </div>
+                <p>Loading</p>
+                <CircularProgress />
               </>
-            ) : error ? (
-              <p>An error occured</p>
+            ) : status == "rejected" ? (
+              <p>An error occurred</p>
             ) : (
               <>
                 <div className="flex flex-col ">
@@ -95,13 +87,7 @@ const Home = () => {
               to="/Tshirts"
               className="cursor-pointer  md:flex hidden border-2 border-black  p-2  items-center justify-center"
             >
-              {isLoading ? (
-                <>
-                  <CircularProgress />
-                </>
-              ) : (
-                <button>View more</button>
-              )}
+              <button>View more</button>
             </Link>
           </div>
           <Link
@@ -109,13 +95,7 @@ const Home = () => {
             className="cursor-pointer  md:hidden flex  border-2 border-black p-2 justify-center"
             onClick={handleScroll}
           >
-            {isLoading ? (
-              <>
-                <CircularProgress />
-              </>
-            ) : (
-              <button>View more</button>
-            )}
+            <button>View more</button>
           </Link>
         </div>
         <h3 className=" font-serif md:text-5xl text-3xl">Hoodies</h3>
@@ -125,15 +105,13 @@ const Home = () => {
             className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
             onClick={handleScroll}
           >
-            {isLoading ? (
+            {status == "pending" ? (
               <>
-                <div>
-                  <p>Loading</p>
-                  <CircularProgress />
-                </div>
+                <p>Loading</p>
+                <CircularProgress />
               </>
-            ) : error ? (
-              <p>An error occured</p>
+            ) : status == "rejected" ? (
+              <p>An error occurred</p>
             ) : (
               <>
                 <div className="flex flex-col ">
@@ -156,13 +134,7 @@ const Home = () => {
               to="/Hoodies"
               className="cursor-pointer  md:flex hidden border-2 border-black  p-2  items-center justify-center"
             >
-              {isLoading ? (
-                <>
-                  <CircularProgress />
-                </>
-              ) : (
-                <button>View more</button>
-              )}
+              <button>View more</button>
             </Link>
           </div>
           <Link
@@ -170,13 +142,7 @@ const Home = () => {
             className="cursor-pointer  md:hidden flex  border-2 border-black p-2 justify-center"
             onClick={handleScroll}
           >
-            {isLoading ? (
-              <>
-                <CircularProgress />
-              </>
-            ) : (
-              <button>View more</button>
-            )}
+            <button>View more</button>
           </Link>
         </div>
         <h3 className="font-serif md:text-5xl text-3xl ">Caps</h3>
@@ -186,15 +152,13 @@ const Home = () => {
             className="flex md:flex-wrap flex-row overflow-x-auto  w-full md:justify-center font-serif gap-5  "
             onClick={handleScroll}
           >
-            {isLoading ? (
+            {status == "pending" ? (
               <>
-                <div>
-                  <p>Loading</p>
-                  <CircularProgress />
-                </div>
+                <p>Loading</p>
+                <CircularProgress />
               </>
-            ) : error ? (
-              <p>An error occured</p>
+            ) : status == "rejected" ? (
+              <p>An error occurred</p>
             ) : (
               <>
                 <div className="flex flex-col">
@@ -217,13 +181,7 @@ const Home = () => {
               to="/Caps"
               className="cursor-pointer  md:flex hidden border-2 border-black px-2 my-[80px] items-center justify-center"
             >
-              {isLoading ? (
-                <>
-                  <CircularProgress />
-                </>
-              ) : (
-                <button>View more</button>
-              )}
+              <button>View more</button>
             </Link>
           </div>
           <Link
@@ -231,13 +189,7 @@ const Home = () => {
             className="  cursor-pointer  md:hidden flex  mb-20 border-2 border-black p-2  justify-center "
             onClick={handleScroll}
           >
-            {isLoading ? (
-              <>
-                <CircularProgress />
-              </>
-            ) : (
-              <button>View more</button>
-            )}
+            <button>View more</button>
           </Link>
         </div>
       </div>
