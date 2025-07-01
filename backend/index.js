@@ -45,18 +45,21 @@ app.use("/api/products", productsRoute);
 //get request
 
 // Serve static files
-app.use(express.static(path.join(__dirname, "client", "build")));
+// app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Catch-all route for client-side routing
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 //listen
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 const uri = process.env.DB_URI;
 
-app.listen(port, console.log(`Server running on port ${port}`));
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
+
 
 //connect to mongodb
 mongoose.set("strictQuery", false);

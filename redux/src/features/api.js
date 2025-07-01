@@ -1,4 +1,4 @@
-export const url = "https://naxybackend.onrender.com/";
+export const url = "http://localhost:5000/";
 
 export const setHeaders = () => {
   const headers = {
