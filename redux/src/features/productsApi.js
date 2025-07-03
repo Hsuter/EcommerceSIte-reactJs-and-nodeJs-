@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://naxybackend.onrender.com/",
+    baseUrl: "/api/",
     prepareHeaders: (headers) => {
       return headers;
     },
